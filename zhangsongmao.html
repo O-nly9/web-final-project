@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张松茂 - 青花瓷大师</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", sans-serif; color: #333; background: #f8fafc; }
+        a { text-decoration: none; color: inherit; }
+        .top-nav { background: #4a7c9b; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; }
+        .top-nav .logo { font-size: 20px; font-weight: bold; cursor: pointer; }
+        .top-nav .nav-links { display: flex; gap: 20px; }
+        .top-nav .nav-links a { font-size: 16px; padding: 5px 10px; transition: color 0.3s; }
+        .top-nav .nav-links a:hover { color: #ffd700; }
+        .content { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        .hero-section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(74,124,155,0.12); padding: 30px; margin-bottom: 25px; }
+        .hero-content { display: flex; gap: 30px; align-items: flex-start; }
+        .hero-image { width: 280px; height: 380px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .hero-info { flex: 1; }
+        .hero-title { font-size: 32px; font-weight: bold; color: #4a7c9b; margin-bottom: 15px; font-family: "STKaiti", "KaiTi", serif; }
+        .hero-subtitle { font-size: 18px; color: #666; margin-bottom: 20px; font-family: "STFangsong", "仿宋", serif; }
+        .info-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 15px; margin-bottom: 20px; }
+        .info-item { display: flex; gap: 10px; }
+        .info-label { font-weight: bold; color: #555; min-width: 70px; }
+        .info-value { color: #666; }
+        .section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(74,124,155,0.12); padding: 25px; margin-bottom: 25px; }
+        .section-title { font-size: 22px; font-weight: bold; color: #4a7c9b; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #4a7c9b; position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 60px; height: 2px; background: #6ba3be; }
+        .section-content { font-size: 15px; line-height: 1.8; color: #555; }
+        .section-content p { margin-bottom: 15px; text-indent: 2em; }
+        .achievements-list { list-style: none; padding-left: 0; }
+        .achievements-list li { position: relative; padding-left: 25px; padding-bottom: 15px; line-height: 1.6; color: #555; }
+        .achievements-list li::before { content: '◆'; position: absolute; left: 0; color: #4a7c9b; }
+        .works-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+        .work-card { background: #f8fafc; border-radius: 8px; padding: 15px; text-align: center; }
+        .work-title { font-size: 16px; font-weight: bold; color: #4a7c9b; margin-bottom: 8px; }
+        .work-desc { font-size: 14px; color: #666; }
+        .quote-section { background: linear-gradient(135deg, #4a7c9b 0%, #6ba3be 100%); border-radius: 8px; padding: 30px; margin-bottom: 25px; text-align: center; }
+        .quote-text { font-size: 18px; color: #fff; font-style: italic; font-family: "STFangsong", "仿宋", serif; }
+        .quote-author { margin-top: 15px; font-size: 14px; color: rgba(255,255,255,0.8); }
+        .footer { background: #4a7c9b; color: #fff; text-align: center; padding: 15px 0; margin-top: 40px; font-size: 14px; }
+        @media (max-width: 768px) { .hero-content { flex-direction: column; align-items: center; } .hero-image { width: 100%; max-width: 300px; height: auto; } .info-grid { grid-template-columns: 1fr; } .works-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='qinghuaci.html'">非遗青花瓷</div>
+        <div class="nav-links">
+            <a href="qinghuaci.html">青花瓷首页</a>
+            <a href="#life">生平简介</a>
+            <a href="#achievements">艺术成就</a>
+            <a href="#works">代表作品</a>
+            <a href="#legacy">传承影响</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="hero-section">
+            <div class="hero-content">
+                <img src=".2.jpg" class="hero-image">
+                <div class="hero-info">
+                    <h1 class="hero-title">张松茂</h1>
+                    <p class="hero-subtitle">陶瓷美术家 · 国礼大师</p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label">籍贯：</span><span class="info-value">江西波阳</span></div>
+                        <div class="info-item"><span class="info-label">出生日期：</span><span class="info-value">1934年</span></div>
+                        <div class="info-item"><span class="info-label">职业：</span><span class="info-value">陶瓷艺术家</span></div>
+                        <div class="info-item"><span class="info-label">擅长领域：</span><span class="info-value">青花山水、人物</span></div>
+                        <div class="info-item"><span class="info-label">荣誉称号：</span><span class="info-value">中国工艺美术大师</span></div>
+                        <div class="info-item"><span class="info-label">代表作品：</span><span class="info-value">《井冈山》《庐山》</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote-text">"青花山水要有灵气，要画出山水的神韵和意境。"</p>
+            <p class="quote-author">—— 张松茂</p>
+        </div>
+
+        <div class="section" id="life">
+            <h2 class="section-title">生平简介</h2>
+            <div class="section-content">
+                <p>张松茂，1934年出生于江西波阳，12岁进入景德镇从事陶瓷绘画，师从陶瓷名家张志汤。他是中国工艺美术大师、享受国务院特殊津贴专家，被誉为"陶瓷美术家"。</p>
+                <p>张松茂擅长青花山水和人物题材，他的作品构图宏大、意境深远、色彩淡雅，具有强烈的艺术感染力。他尤其擅长描绘祖国大好河山，作品充满诗情画意。</p>
+                <p>张松茂的作品多次作为国礼赠送给外国元首，是景德镇陶瓷艺术走向世界的重要推动者。他的作品被中国美术馆、北京故宫博物院等多家重要机构收藏。</p>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <h2 class="section-title">艺术成就</h2>
+            <ul class="achievements-list">
+                <li><strong>中国工艺美术大师：</strong>1994年荣获"中国工艺美术大师"称号。</li>
+                <li><strong>国礼创作：</strong>多次为国家领导人创作国礼瓷，作品被多国元首收藏。</li>
+                <li><strong>作品收藏：</strong>多件作品被中国美术馆、故宫博物院等国家级博物馆收藏。</li>
+                <li><strong>艺术创新：</strong>开创了"青花分水"技法的新境界，使青花山水层次更加丰富。</li>
+                <li><strong>技艺传承：</strong>培养了大批陶瓷艺术人才，其子张中闻也是知名陶瓷艺术家。</li>
+                <li><strong>荣誉表彰：</strong>荣获"中国陶瓷艺术终身成就奖"等多项荣誉。</li>
+            </ul>
+        </div>
+
+        <div class="section" id="works">
+            <h2 class="section-title">代表作品</h2>
+            <div class="works-grid">
+                <div class="work-card"><div class="work-title">井冈山</div><div class="work-desc">青花山水瓷板画，展现革命圣地风光</div></div>
+                <div class="work-card"><div class="work-title">庐山风光</div><div class="work-desc">青花山水瓷瓶，描绘庐山美景</div></div>
+                <div class="work-card"><div class="work-title">长江万里图</div><div class="work-desc">青花长卷瓷板画</div></div>
+                <div class="work-card"><div class="work-title">黄山云海</div><div class="work-desc">青花山水瓷瓶</div></div>
+                <div class="work-card"><div class="work-title">漓江春色</div><div class="work-desc">青花山水瓷板画</div></div>
+                <div class="work-card"><div class="work-title">富春山居图</div><div class="work-desc">青花山水瓷瓶</div></div>
+            </div>
+        </div>
+
+        <div class="section" id="legacy">
+            <h2 class="section-title">传承影响</h2>
+            <div class="section-content">
+                <p>张松茂是当代青花山水艺术的代表人物，他的作品不仅具有很高的艺术价值，更承载着深厚的文化内涵。他善于将传统山水画技法与陶瓷艺术相结合，创造出独具特色的青花山水风格。</p>
+                <p>作为国礼大师，张松茂的作品成为中国文化对外交流的重要载体，让世界更好地了解中国陶瓷艺术的魅力。他的创作理念和艺术风格影响了众多年轻艺术家。</p>
+                <p>张松茂注重培养传承人，他的子女和弟子们在陶瓷艺术领域都取得了显著成就，为青花瓷艺术的传承与发展做出了重要贡献。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>白釉青花一火成 · 花从釉里透分明</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

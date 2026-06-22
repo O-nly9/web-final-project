@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张振武 - 打铁花大师</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", sans-serif; color: #333; background: #fff5f0; }
+        a { text-decoration: none; color: inherit; }
+        .top-nav { background: #c0392b; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; }
+        .top-nav .logo { font-size: 20px; font-weight: bold; cursor: pointer; }
+        .top-nav .nav-links { display: flex; gap: 20px; }
+        .top-nav .nav-links a { font-size: 16px; padding: 5px 10px; transition: color 0.3s; }
+        .top-nav .nav-links a:hover { color: #ffd700; }
+        .content { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        .hero-section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(192,57,43,0.12); padding: 30px; margin-bottom: 25px; }
+        .hero-content { display: flex; gap: 30px; align-items: flex-start; }
+        .hero-image { width: 280px; height: 380px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .hero-info { flex: 1; }
+        .hero-title { font-size: 32px; font-weight: bold; color: #c0392b; margin-bottom: 15px; font-family: "STKaiti", "KaiTi", serif; }
+        .hero-subtitle { font-size: 18px; color: #666; margin-bottom: 20px; font-family: "STFangsong", "仿宋", serif; }
+        .info-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 15px; margin-bottom: 20px; }
+        .info-item { display: flex; gap: 10px; }
+        .info-label { font-weight: bold; color: #555; min-width: 70px; }
+        .info-value { color: #666; }
+        .section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(192,57,43,0.12); padding: 25px; margin-bottom: 25px; }
+        .section-title { font-size: 22px; font-weight: bold; color: #c0392b; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #c0392b; position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 60px; height: 2px; background: #e74c3c; }
+        .section-content { font-size: 15px; line-height: 1.8; color: #555; }
+        .section-content p { margin-bottom: 15px; text-indent: 2em; }
+        .achievements-list { list-style: none; padding-left: 0; }
+        .achievements-list li { position: relative; padding-left: 25px; padding-bottom: 15px; line-height: 1.6; color: #555; }
+        .achievements-list li::before { content: '◆'; position: absolute; left: 0; color: #c0392b; }
+        .works-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+        .work-card { background: #fff5f0; border-radius: 8px; padding: 15px; text-align: center; }
+        .work-title { font-size: 16px; font-weight: bold; color: #c0392b; margin-bottom: 8px; }
+        .work-desc { font-size: 14px; color: #666; }
+        .quote-section { background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%); border-radius: 8px; padding: 30px; margin-bottom: 25px; text-align: center; }
+        .quote-text { font-size: 18px; color: #fff; font-style: italic; font-family: "STFangsong", "仿宋", serif; }
+        .quote-author { margin-top: 15px; font-size: 14px; color: rgba(255,255,255,0.8); }
+        .footer { background: #c0392b; color: #fff; text-align: center; padding: 15px 0; margin-top: 40px; font-size: 14px; }
+        @media (max-width: 768px) { .hero-content { flex-direction: column; align-items: center; } .hero-image { width: 100%; max-width: 300px; height: auto; } .info-grid { grid-template-columns: 1fr; } .works-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='datiehua.html'">非遗打铁花</div>
+        <div class="nav-links">
+            <a href="datiehua.html">打铁花首页</a>
+            <a href="#life">生平简介</a>
+            <a href="#achievements">艺术成就</a>
+            <a href="#works">代表作品</a>
+            <a href="#legacy">传承影响</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="hero-section">
+            <div class="hero-content">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20male%20traditional%20fire%20artisan%20portrait%20warm&image_size=portrait_4_3" alt="张振武" class="hero-image">
+                <div class="hero-info">
+                    <h1 class="hero-title">张振武</h1>
+                    <p class="hero-subtitle">山西打铁花传承人 · 创新推广者</p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label">籍贯：</span><span class="info-value">山西晋中</span></div>
+                        <div class="info-item"><span class="info-label">出生日期：</span><span class="info-value">1956年</span></div>
+                        <div class="info-item"><span class="info-label">职业：</span><span class="info-value">打铁花表演艺术家</span></div>
+                        <div class="info-item"><span class="info-label">擅长技艺：</span><span class="info-value">山西打铁花</span></div>
+                        <div class="info-item"><span class="info-label">荣誉称号：</span><span class="info-value">山西省民间艺术家</span></div>
+                        <div class="info-item"><span class="info-label">代表作品：</span><span class="info-value">创新打铁花表演</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote-text">"传统技艺需要创新，才能走向更远的未来。"</p>
+            <p class="quote-author">—— 张振武</p>
+        </div>
+
+        <div class="section" id="life">
+            <h2 class="section-title">生平简介</h2>
+            <div class="section-content">
+                <p>张振武，1956年出生于山西晋中，自幼跟随父亲学习打铁花技艺。他是山西省民间艺术家，从事打铁花表演四十余年，是山西打铁花的代表性传承人之一。</p>
+                <p>张振武不仅精通传统打铁花技艺，还积极致力于创新和推广。他将传统打铁花与现代舞台艺术相结合，创造出更具观赏性的表演形式，深受广大观众的喜爱。</p>
+                <p>作为传承人，张振武积极培养年轻一代，通过开设工作室、举办培训班等方式，让更多年轻人了解和学习打铁花技艺，推动这项传统艺术的发展。</p>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <h2 class="section-title">艺术成就</h2>
+            <ul class="achievements-list">
+                <li><strong>山西省民间艺术家：</strong>2009年荣获"山西省民间艺术家"称号。</li>
+                <li><strong>表演奖项：</strong>多次获得国家级、省级民间艺术表演奖项。</li>
+                <li><strong>技艺传承：</strong>创办打铁花工作室，培养年轻传承人。</li>
+                <li><strong>文化交流：</strong>多次赴国内外进行打铁花表演，传播中国传统艺术。</li>
+                <li><strong>技艺创新：</strong>在传统基础上创新表演形式，丰富表现力。</li>
+                <li><strong>非遗推广：</strong>积极参与山西打铁花非遗申报与保护工作。</li>
+            </ul>
+        </div>
+
+        <div class="section" id="works">
+            <h2 class="section-title">代表作品</h2>
+            <div class="works-grid">
+                <div class="work-card"><div class="work-title">传统打铁花</div><div class="work-desc">经典技艺传承</div></div>
+                <div class="work-card"><div class="work-title">创新表演</div><div class="work-desc">现代舞台编排</div></div>
+                <div class="work-card"><div class="work-title">火龙舞花</div><div class="work-desc">舞龙与打铁花结合</div></div>
+                <div class="work-card"><div class="work-title">节庆专场</div><div class="work-desc">春节元宵表演</div></div>
+                <div class="work-card"><div class="work-title">文旅演出</div><div class="work-desc">景区常态化演出</div></div>
+                <div class="work-card"><div class="work-title">灯光秀</div><div class="work-desc">灯光与铁花结合</div></div>
+            </div>
+        </div>
+
+        <div class="section" id="legacy">
+            <h2 class="section-title">传承影响</h2>
+            <div class="section-content">
+                <p>张振武是山西打铁花的代表人物，他的表演不仅具有很高的艺术价值，更承载着山西地区的传统文化。他将传统打铁花技艺与现代创新相结合，让更多人了解和喜爱这门传统艺术。</p>
+                <p>作为技艺传承人，张振武积极参与非遗保护工作，通过举办表演、开设培训班等方式，让更多年轻人了解和学习打铁花技艺。他常说："传统艺术需要创新，只有与时俱进，才能永葆青春。"</p>
+                <p>张振武的努力使得山西打铁花技艺得到了更好的保护和传承，他是传统艺术创新发展的典范。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>火树银花不夜天 · 千年绝技展新颜</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张桂英 - 苗绣企业家</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", sans-serif; color: #333; background: #f0f6f7; }
+        a { text-decoration: none; color: inherit; }
+        .top-nav { background: #0f4c5c; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; }
+        .top-nav .logo { font-size: 20px; font-weight: bold; cursor: pointer; }
+        .top-nav .nav-links { display: flex; gap: 20px; }
+        .top-nav .nav-links a { font-size: 16px; padding: 5px 10px; transition: color 0.3s; }
+        .top-nav .nav-links a:hover { color: #e63923; }
+        .content { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        .hero-section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(15,76,92,0.12); padding: 30px; margin-bottom: 25px; }
+        .hero-content { display: flex; gap: 30px; align-items: flex-start; }
+        .hero-image { width: 280px; height: 380px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,15); }
+        .hero-info { flex: 1; }
+        .hero-title { font-size: 32px; font-weight: bold; color: #912015; margin-bottom: 15px; font-family: "STKaiti", "KaiTi", serif; }
+        .hero-subtitle { font-size: 18px; color: #666; margin-bottom: 20px; font-family: "STFangsong", "仿宋", serif; }
+        .info-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 15px; margin-bottom: 20px; }
+        .info-item { display: flex; gap: 10px; }
+        .info-label { font-weight: bold; color: #555; min-width: 70px; }
+        .info-value { color: #666; }
+        .section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(15,76,92,0.12); padding: 25px; margin-bottom: 25px; }
+        .section-title { font-size: 22px; font-weight: bold; color: #912015; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e63923; position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 60px; height: 2px; background: #912015; }
+        .section-content { font-size: 15px; line-height: 1.8; color: #555; }
+        .section-content p { margin-bottom: 15px; text-indent: 2em; }
+        .achievements-list { list-style: none; padding-left: 0; }
+        .achievements-list li { position: relative; padding-left: 25px; padding-bottom: 15px; line-height: 1.6; color: #555; }
+        .achievements-list li::before { content: '◆'; position: absolute; left: 0; color: #e63923; }
+        .works-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+        .work-card { background: #f0f6f7; border-radius: 8px; padding: 15px; text-align: center; }
+        .work-title { font-size: 16px; font-weight: bold; color: #912015; margin-bottom: 8px; }
+        .work-desc { font-size: 14px; color: #666; }
+        .quote-section { background: linear-gradient(135deg, #912015 0%, #b82c1c 100%); border-radius: 8px; padding: 30px; margin-bottom: 25px; text-align: center; }
+        .quote-text { font-size: 18px; color: #fff; font-style: italic; font-family: "STFangsong", "仿宋", serif; }
+        .quote-author { margin-top: 15px; font-size: 14px; color: rgba(255,255,255,0.8); }
+        .footer { background: #0f4c5c; color: #fff; text-align: center; padding: 15px 0; margin-top: 40px; font-size: 14px; }
+        @media (max-width: 768px) { .hero-content { flex-direction: column; align-items: center; } .hero-image { width: 100%; max-width: 300px; height: auto; } .info-grid { grid-template-columns: 1fr; } .works-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='miaoxiu.html'">非遗苗绣</div>
+        <div class="nav-links">
+            <a href="miaoxiu.html">苗绣首页</a>
+            <a href="#life">生平简介</a>
+            <a href="#achievements">创业成就</a>
+            <a href="#works">代表产品</a>
+            <a href="#legacy">社会影响</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="hero-section">
+            <div class="hero-content">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chinese%20woman%20business%20leader%20entrepreneur%20portrait%20confident&image_size=portrait_4_3" alt="张桂英" class="hero-image">
+                <div class="hero-info">
+                    <h1 class="hero-title">张桂英</h1>
+                    <p class="hero-subtitle">苗绣企业家 · 非遗扶贫带头人</p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label">籍贯：</span><span class="info-value">贵州凯里</span></div>
+                        <div class="info-item"><span class="info-label">出生日期：</span><span class="info-value">1970年</span></div>
+                        <div class="info-item"><span class="info-label">职业：</span><span class="info-value">企业家、非遗传承人</span></div>
+                        <div class="info-item"><span class="info-label">创办企业：</span><span class="info-value">贵州苗绣非遗工坊</span></div>
+                        <div class="info-item"><span class="info-label">荣誉称号：</span><span class="info-value">全国脱贫攻坚先进个人</span></div>
+                        <div class="info-item"><span class="info-label">带动就业：</span><span class="info-value">超过1000名绣娘</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote-text">"让每一位绣娘的巧手都能创造价值，让苗绣走向世界。"</p>
+            <p class="quote-author">—— 张桂英</p>
+        </div>
+
+        <div class="section" id="life">
+            <h2 class="section-title">生平简介</h2>
+            <div class="section-content">
+                <p>张桂英，1970年出生于贵州凯里苗族家庭，从小学习苗绣。她凭借出色的技艺和敏锐的商业头脑，从一名普通绣娘成长为成功的企业家。2008年，她创办了贵州苗绣非遗工坊，开始了创业之路。</p>
+                <p>张桂英的工坊不仅传承了传统苗绣技艺，还通过现代化的管理模式和市场营销，将苗绣产品推向了更广阔的市场。她注重产品创新，开发出适应现代生活的苗绣产品，让传统技艺焕发新生。</p>
+                <p>作为一名企业家，张桂英始终牢记社会责任，她的工坊为当地绣娘提供了就业机会，帮助她们实现居家就业，脱贫致富。她的努力得到了社会的广泛认可，荣获多项荣誉。</p>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <h2 class="section-title">创业成就</h2>
+            <ul class="achievements-list">
+                <li><strong>创办工坊：</strong>2008年创办贵州苗绣非遗工坊，如今已发展为当地龙头企业。</li>
+                <li><strong>带动就业：</strong>直接带动超过1000名绣娘就业，间接带动产业链就业超过5000人。</li>
+                <li><strong>扶贫贡献：</strong>荣获"全国脱贫攻坚先进个人"荣誉称号。</li>
+                <li><strong>产品创新：</strong>开发出数百种苗绣文创产品，远销国内外。</li>
+                <li><strong>品牌建设：</strong>打造知名苗绣品牌，提升苗绣文化影响力。</li>
+                <li><strong>公益事业：</strong>设立苗绣传承基金，支持年轻传承人培养。</li>
+            </ul>
+        </div>
+
+        <div class="section" id="works">
+            <h2 class="section-title">代表产品</h2>
+            <div class="works-grid">
+                <div class="work-card"><div class="work-title">苗绣服饰系列</div><div class="work-desc">民族风时尚服装</div></div>
+                <div class="work-card"><div class="work-title">家居饰品系列</div><div class="work-desc">刺绣挂画、抱枕等</div></div>
+                <div class="work-card"><div class="work-title">文创产品系列</div><div class="work-desc">笔记本、手机壳等</div></div>
+                <div class="work-card"><div class="work-title">配饰系列</div><div class="work-desc">包包、围巾、首饰等</div></div>
+                <div class="work-card"><div class="work-title">礼品系列</div><div class="work-desc">商务礼品、伴手礼</div></div>
+                <div class="work-card"><div class="work-title">定制服务</div><div class="work-desc">个性化刺绣定制</div></div>
+            </div>
+        </div>
+
+        <div class="section" id="legacy">
+            <h2 class="section-title">社会影响</h2>
+            <div class="section-content">
+                <p>张桂英不仅是一位成功的企业家，更是苗绣文化传承的推动者。她通过创办工坊，让更多人了解和喜爱苗绣，同时也为当地绣娘提供了稳定的收入来源，改善了她们的生活。</p>
+                <p>在她的带领下，苗绣不再仅仅是一门传统技艺，更是一种能够创造经济效益的文化产业。她的模式被称为"非遗扶贫"的典范，为其他地区的非遗传承提供了借鉴。</p>
+                <p>张桂英用她的智慧和担当，书写了苗绣传承与发展的新篇章，成为非遗产业化道路上的标杆人物。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>针尖苗韵 传承千年苗绣非遗文化</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨奶英 - 苗绣大师</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            color: #333;
+            background: #f0f6f7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .top-nav {
+            background: #0f4c5c;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .top-nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-nav .nav-links a {
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #e63923;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(15, 76, 92, 0.12);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .hero-image {
+            width: 280px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #912015;
+            margin-bottom: 15px;
+            font-family: "STKaiti", "KaiTi", serif;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+            font-family: "STFangsong", "仿宋", serif;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 10px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 70px;
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(15, 76, 92, 0.12);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #912015;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e63923;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #912015;
+        }
+
+        .section-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .section-content p {
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements-list li {
+            position: relative;
+            padding-left: 25px;
+            padding-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .achievements-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #e63923;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .work-card {
+            background: #f0f6f7;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .work-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #912015;
+            margin-bottom: 8px;
+        }
+
+        .work-desc {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, #912015 0%, #b82c1c 100%);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            color: #fff;
+            font-style: italic;
+            font-family: "STFangsong", "仿宋", serif;
+        }
+
+        .quote-author {
+            margin-top: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer {
+            background: #0f4c5c;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 图片放大预览弹窗 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            cursor: pointer;
+        }
+
+        .image-modal.active {
+            display: block;
+            overflow: auto;
+        }
+
+        .modal-scroll-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+            transform-origin: center top;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1002;
+        }
+
+        .modal-close:hover {
+            color: #912015;
+        }
+
+        .modal-title {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 16px;
+            border-radius: 20px;
+            z-index: 1002;
+        }
+
+        .zoom-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            backdrop-filter: blur(4px);
+        }
+
+        .zoom-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .zoom-reset {
+            width: auto;
+            padding: 0 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .clickable-img {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='miaoxiu.html'">非遗苗绣</div>
+        <div class="nav-links">
+            <a href="miaoxiu.html">苗绣首页</a>
+            <a href="#life">生平简介</a>
+            <a href="#achievements">艺术成就</a>
+            <a href="#works">代表作品</a>
+            <a href="#legacy">传承影响</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="hero-section">
+            <div class="hero-content">
+                <img src="1.2.6.jpg" alt="杨奶英" class="hero-image">
+                <div class="hero-info">
+                    <h1 class="hero-title">杨奶英</h1>
+                    <p class="hero-subtitle">省级非遗传承人 · 苗绣大师</p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label">籍贯：</span><span class="info-value">贵州施洞</span>
+                        </div>
+                        <div class="info-item"><span class="info-label">出生日期：</span><span
+                                class="info-value">1953年</span></div>
+                        <div class="info-item"><span class="info-label">职业：</span><span
+                                class="info-value">苗绣大师、工艺师</span></div>
+                        <div class="info-item"><span class="info-label">擅长针法：</span><span
+                                class="info-value">破线绣、辫绣</span></div>
+                        <div class="info-item"><span class="info-label">荣誉称号：</span><span
+                                class="info-value">贵州省工艺美术大师</span></div>
+                        <div class="info-item"><span class="info-label">代表作品：</span><span
+                                class="info-value">苗族盛装、背扇</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote-text">"一根丝线，能绣出整个世界。"</p>
+            <p class="quote-author">—— 杨奶英</p>
+        </div>
+
+        <div class="section" id="life">
+            <h2 class="section-title">生平简介</h2>
+            <div class="section-content">
+                <p>杨奶英，1953年出生于贵州施洞苗族家庭，自幼受家庭影响喜爱刺绣。她的祖母和母亲都是当地有名的绣娘，在她们的悉心教导下，杨奶英8岁就能独立刺绣简单图案，15岁时已能完成整套苗族盛装。</p>
+                <p>杨奶英擅长破线绣和辫绣，她的作品以图案精美、色彩搭配巧妙著称。她善于将传统纹样与现代审美相结合，创作出既有民族特色又符合时代潮流的苗绣作品。</p>
+                <p>作为贵州省工艺美术大师，杨奶英多次参加国内外工艺美术展览，她的作品深受各界人士喜爱，被众多收藏家珍藏。她还积极参与苗绣传承工作，培养了一批年轻传承人。</p>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <h2 class="section-title">艺术成就</h2>
+            <ul class="achievements-list">
+                <li><strong>省级传承人：</strong>贵州省非物质文化遗产项目苗绣代表性传承人。</li>
+                <li><strong>工艺大师：</strong>荣获"贵州省工艺美术大师"称号。</li>
+                <li><strong>获奖作品：</strong>作品《百鸟朝凤》获中国工艺美术百花奖银奖。</li>
+                <li><strong>技艺创新：</strong>在传统破线绣基础上创新针法，丰富表现力。</li>
+                <li><strong>文化交流：</strong>多次代表贵州参加国际文化交流活动。</li>
+                <li><strong>传承教育：</strong>创办苗绣培训班，培养年轻绣娘两百余人。</li>
+            </ul>
+        </div>
+
+        <div class="section" id="works">
+            <h2 class="section-title">代表作品</h2>
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-title">百鸟朝凤</div>
+                    <div class="work-desc">荣获中国工艺美术百花奖银奖</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">苗族盛装</div>
+                    <div class="work-desc">精美满绣节日礼服</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">蝴蝶纹背扇</div>
+                    <div class="work-desc">护佑孩童的吉祥背扇</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">花鸟挂屏</div>
+                    <div class="work-desc">家居装饰精品</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">苗龙围裙</div>
+                    <div class="work-desc">日常服饰精品</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">锦鸡图</div>
+                    <div class="work-desc">苗族吉祥图案代表作</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="legacy">
+            <h2 class="section-title">传承影响</h2>
+            <div class="section-content">
+                <p>杨奶英是苗绣技艺传承的中坚力量，她不仅技艺精湛，还具有开拓创新精神。她将传统苗绣与现代设计理念相结合，开发出一系列符合市场需求的苗绣产品，让古老技艺焕发新生。</p>
+                <p>在传承方面，杨奶英采取"手把手"教学方式，确保每一位学徒都能掌握正宗的苗绣技艺。她常说："苗绣不仅是一门手艺，更是我们民族的根，必须代代相传。"</p>
+                <p>杨奶英的努力使得越来越多的人认识到苗绣的价值，她用自己的行动践行着对传统文化的热爱与坚守，成为苗绣传承路上的标杆人物。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>针尖苗韵 传承千年苗绣非遗文化</p>
+    </div>
+
+    <!-- 图片放大预览弹窗 -->
+    <div class="image-modal" id="imageModal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <div class="modal-scroll-wrapper" id="modalScrollWrapper">
+            <img class="modal-content" id="modalImage">
+        </div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomOut" title="缩小">-</button>
+            <button class="zoom-btn zoom-reset" id="zoomReset">100%</button>
+            <button class="zoom-btn" id="zoomIn" title="放大">+</button>
+        </div>
+    </div>
+
+    <script>
+        // 图片放大预览功能
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalClose = document.getElementById('modalClose');
+        const modalWrapper = document.getElementById('modalScrollWrapper');
+        const zoomInBtn = document.getElementById('zoomIn');
+        const zoomOutBtn = document.getElementById('zoomOut');
+        const zoomResetBtn = document.getElementById('zoomReset');
+
+        let currentScale = 1;
+        const scaleStep = 0.25;
+        const minScale = 0.5;
+        const maxScale = 2;
+
+        function updateZoom() {
+            currentScale = Math.max(minScale, Math.min(maxScale, currentScale));
+            modalImg.style.transform = `scale(${currentScale})`;
+            zoomResetBtn.textContent = Math.round(currentScale * 100) + '%';
+        }
+
+        function resetZoom() {
+            currentScale = 1;
+            modalImg.style.transform = '';
+            zoomResetBtn.textContent = '100%';
+        }
+
+        // 图片点击放大
+        const images = document.querySelectorAll('img:not(.modal-content)');
+        images.forEach(img => {
+            img.classList.add('clickable-img');
+            img.addEventListener('click', function (e) {
+                e.stopPropagation();
+                modalImg.src = this.src;
+                modalTitle.textContent = this.alt || '图片预览';
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                resetZoom();
+            });
+        });
+
+        // 滚轮缩放
+        modal.addEventListener('wheel', function (e) {
+            if (!modal.classList.contains('active')) return;
+            if (e.target === modalClose || e.target.closest('.zoom-controls')) return;
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -scaleStep : scaleStep;
+            currentScale += delta;
+            updateZoom();
+        });
+
+        // 按钮缩放
+        zoomInBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            currentScale += scaleStep;
+            updateZoom();
+        });
+
+        zoomOutBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            currentScale -= scaleStep;
+            updateZoom();
+        });
+
+        zoomResetBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            resetZoom();
+        });
+
+        // 拖拽移动
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
+
+        modal.addEventListener('mousedown', function (e) {
+            if (!modal.classList.contains('active')) return;
+            if (e.target === modalClose || e.target.closest('.zoom-controls')) return;
+            isDragging = true;
+            modal.style.cursor = 'grabbing';
+            startX = e.pageX - modal.offsetLeft;
+            startY = e.pageY - modal.offsetTop;
+            scrollLeft = modal.scrollLeft;
+            scrollTop = modal.scrollTop;
+        });
+
+        modal.addEventListener('mouseleave', function () {
+            isDragging = false;
+            modal.style.cursor = 'pointer';
+        });
+
+        modal.addEventListener('mouseup', function () {
+            isDragging = false;
+            modal.style.cursor = 'pointer';
+        });
+
+        modal.addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - modal.offsetLeft;
+            const y = e.pageY - modal.offsetTop;
+            const walkX = (x - startX) * 1.5;
+            const walkY = (y - startY) * 1.5;
+            modal.scrollLeft = scrollLeft - walkX;
+            modal.scrollTop = scrollTop - walkY;
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            resetZoom();
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal || e.target === modalWrapper) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // 锚点平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>
