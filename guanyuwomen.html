@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非遗文化 - 关于我们</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimSun", sans-serif;
+            color: #333;
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            background: #4a7c9b;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .top-nav .logo {
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            color: #ffd700;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .top-nav .nav-links a {
+            font-size: 16px;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #ffd700;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .top-nav .login-btn {
+            font-size: 16px;
+            cursor: pointer;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #ffd700;
+            color: #4a7c9b;
+        }
+
+        /* 头图横幅 */
+        .hero {
+            position: relative;
+            height: 280px;
+            background: linear-gradient(145deg, #4a7c9b 0%, #284f69 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M70 130c-33 0-60-27-60-60s27-60 60-60 60 27 60 60-27 60-60 60zm0-110c-27.6 0-50 22.4-50 50s22.4 50 50 50 50-22.4 50-50-22.4-50-50-50z' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E");
+            opacity: 0.6;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-family: "KaiTi", STKaiti, serif;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+            letter-spacing: 4px;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.92;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        /* 主体内容 */
+        .content {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(74, 124, 155, 0.12);
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #2d4a5f;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ffd700;
+            display: inline-block;
+        }
+
+        .section-content {
+            font-size: 16px;
+            line-height: 2;
+            color: #555;
+        }
+
+        .section-content p {
+            margin-bottom: 20px;
+            text-indent: 2em;
+        }
+
+        /* 特色卡片 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8fafc, #fff);
+            padding: 30px 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e8e8e8;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(74, 124, 155, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 40px;
+            color: #4a7c9b;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            color: #2d4a5f;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 团队介绍 */
+        .team-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .team-item {
+            flex: 1;
+            min-width: 200px;
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .team-item h4 {
+            font-size: 18px;
+            color: #4a7c9b;
+            margin-bottom: 8px;
+        }
+
+        .team-item p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #3a627e;
+            color: #fff;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #ffd700;
+            text-decoration: underline;
+            margin: 0 8px;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 20px;
+            }
+
+            .top-nav .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .section {
+                padding: 30px 25px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='index.html'">
+            <i class="fa-solid fa-scroll"></i>
+            非遗文化
+        </div>
+        <div class="nav-links">
+            <a href="index.html">总首页</a>
+            <a href="qinghuaci.html">青花瓷</a>
+            <a href="zanhua.html">簪花</a>
+            <a href="piyingxi.html">皮影戏</a>
+            <a href="datiehua.html">打铁花</a>
+            <a href="kunqu.html">昆曲</a>
+            <a href="miaoxiu.html">苗绣</a>
+            <a href="jiaoliu.html">在线交流</a>
+        </div>
+        <div class="login-btn" onclick="location.href='denglu.html'">登录 / 注册</div>
+    </div>
+
+    <div class="hero">
+        <h1 class="hero-title">关于我们</h1>
+        <p class="hero-subtitle">传承非遗文化 · 守护民族瑰宝</p>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <h2 class="section-title">平台简介</h2>
+            <div class="section-content">
+                <p>中国非遗文化传播平台致力于非物质文化遗产的数字化保护、传承与推广。我们汇聚青花瓷、簪花、皮影戏、打铁花、昆曲、苗绣等众多国家级非遗项目，通过互联网技术让传统文化走进现代生活。</p>
+                <p>平台以"让非遗活起来、传下去"为使命，整合非遗传承人资源、非遗技艺资料、非遗文化资讯，为非遗爱好者、研究者、传承人搭建交流互动的桥梁，推动中华优秀传统文化创造性转化、创新性发展。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">我们的使命</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-book-open"></i>
+                    <h3>文化传承</h3>
+                    <p>记录保存非遗技艺，整理非遗文献资料，让千年技艺代代相传</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>人才培养</h3>
+                    <p>对接传承人与学习者，开展非遗培训课程，培育新一代传承力量</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-globe"></i>
+                    <h3>文化传播</h3>
+                    <p>线上线下多渠道推广，让非遗文化走向大众、走向世界</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">团队介绍</h2>
+            <div class="section-content">
+                <p>我们是一支热爱传统文化、富有创新精神的团队。团队成员涵盖非遗研究专家、文化传承人、互联网技术人才、新媒体运营人员等，共同为非遗文化的保护与传承贡献力量。</p>
+            </div>
+            <div class="team-list">
+                <div class="team-item">
+                    <h4>非遗研究部</h4>
+                    <p>负责非遗项目调研、资料整理、学术研究</p>
+                </div>
+                <div class="team-item">
+                    <h4>内容运营部</h4>
+                    <p>负责平台内容策划、编辑制作、活动组织</p>
+                </div>
+                <div class="team-item">
+                    <h4>技术开发部</h4>
+                    <p>负责平台建设、功能开发、技术支持</p>
+                </div>
+                <div class="team-item">
+                    <h4>对外合作部</h4>
+                    <p>负责传承人对接、机构合作、品牌推广</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">合作单位</h2>
+            <div class="section-content">
+                <p>平台与多家非遗保护机构、文化研究院校、非遗传承人工作室建立深度合作关系，共同推进非遗文化的保护传承与创新发展。欢迎更多有志于非遗事业的单位与我们联系合作。</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>©2026 中国非遗文化传播有限公司 版权所有</p>
+        <p style="margin-top: 10px;">
+            <a href="guanyuwomen.html">关于我们</a> | 
+            <a href="lianxiwomen.html">联系我们</a>
+        </p>
+    </footer>
+</body>
+
+</html>

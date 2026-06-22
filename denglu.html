@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非遗文化 - 用户登录</title>
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimSun", sans-serif;
+            color: #333;
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            background: #4a7c9b;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .top-nav .logo {
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            color: #ffd700;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .top-nav .nav-links a {
+            font-size: 16px;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #ffd700;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .top-nav .login-btn {
+            font-size: 16px;
+            cursor: pointer;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #ffd700;
+            color: #4a7c9b;
+        }
+
+        /* 主体登录区域 */
+        .hero {
+            position: relative;
+            min-height: calc(100vh - 132px);
+            background: linear-gradient(150deg, #4a7c9b 0%, #28506b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* 古风半透明装饰 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://img0.baidu.com/it/u=3682779322,3042797217&fm=253&fmt=auto&app=138&f=JPEG?w=1920&h=1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+        }
+
+        .login-box {
+            background: #ffffff;
+            padding: 50px 60px;
+            border-radius: 16px;
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 440px;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .login-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #2d4a5f;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .login-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: #ffd700;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            border-radius: 3px;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 15px 15px 48px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #fbfdff;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4a7c9b;
+            box-shadow: 0 0 0 3px rgba(74, 124, 155, 0.15);
+            background: #fff;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .form-options a {
+            color: #4a7c9b;
+            transition: color 0.2s;
+        }
+
+        .form-options a:hover {
+            color: #ffb900;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #4a7c9b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: #38637f;
+            box-shadow: 0 6px 18px rgba(74, 124, 155, 0.3);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .register-link a {
+            color: #4a7c9b;
+            font-weight: 500;
+            margin-left: 4px;
+        }
+
+        .register-link a:hover {
+            color: #ffb900;
+        }
+
+        /* 底部页脚 */
+        .footer {
+            background: #3a627e;
+            color: #fff;
+            text-align: center;
+            padding: 22px;
+            font-size: 14px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 992px) {
+            .top-nav {
+                padding: 12px 20px;
+            }
+
+            .top-nav .nav-links {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .top-nav .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .login-box {
+                padding: 38px 30px;
+            }
+
+            .login-title {
+                font-size: 26px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='index.html'">
+            <i class="fa-solid fa-scroll"></i>
+            非遗文化
+        </div>
+        <div class="nav-links">
+            <a href="index.html">总首页</a>
+            <a href="qinghuaci.html">青花瓷</a>
+            <a href="zanhua.html">簪花</a>
+            <a href="piyingxi.html">皮影戏</a>
+            <a href="datiehua.html">打铁花</a>
+            <a href="kunqu.html">昆曲</a>
+            <a href="miaoxiu.html">苗绣</a>
+            <a href="jiaoliu.html">在线交流</a>
+        </div>
+        <div class="login-btn" onclick="location.href='denglu.html'">登录 / 注册</div>
+    </div>
+
+    <div class="hero">
+        <div class="login-box">
+            <h2 class="login-title">用户登录</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="username" placeholder="请输入用户名" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" placeholder="请输入密码" required>
+                    </div>
+                </div>
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" id="remember"> 记住我
+                    </label>
+                    <a href="forgetpwd.html">忘记密码?</a>
+                </div>
+                <button type="submit" class="btn" id="submitBtn">登录</button>
+                <div class="register-link">
+                    还没有账号？<a href="zhuce.html">立即注册</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>©2026 中国非遗文化传播有限公司 版权所有</p>
+    </footer>
+
+    <script>
+        // 表单登录校验逻辑
+        // 表单登录校验逻辑
+        const loginForm = document.getElementById('loginForm');
+        const username = document.getElementById('username');
+        const password = document.getElementById('password');
+        const submitBtn = document.getElementById('submitBtn');
+
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let uname = username.value.trim();
+            let pwd = password.value.trim();
+
+            // 简单前端校验
+            if (uname === '') {
+                alert('请输入用户名');
+                username.focus();
+                return;
+            }
+            if (pwd === '') {
+                alert('请输入密码');
+                password.focus();
+                return;
+            }
+            if (pwd.length < 6) {
+                alert('密码至少6位字符');
+                return;
+            }
+
+            // 读取所有注册用户
+            const userArr = JSON.parse(localStorage.getItem('userData')) || [];
+            // 查找匹配账号
+            const targetUser = userArr.find(u => u.name === uname);
+
+            if (!targetUser) {
+                alert('用户不存在，请先注册账号');
+                return;
+            }
+            if (targetUser.pwd !== pwd) {
+                alert('密码输入错误');
+                password.value = '';
+                password.focus();
+                return;
+            }
+
+            // 账号密码全部正确，登录加载
+            submitBtn.innerText = '登录中...';
+            submitBtn.disabled = true;
+
+            // 模拟接口请求，2秒后跳转首页
+            setTimeout(() => {
+                alert('登录成功！即将跳转首页');
+                location.href = 'index.html';
+            }, 2000);
+        })
+
+        // 记住我简易本地存储
+        const rememberCheck = document.getElementById('remember');
+        // 页面加载读取缓存
+        window.onload = function () {
+            if (localStorage.getItem('saveUser')) {
+                username.value = localStorage.getItem('saveUser');
+                rememberCheck.checked = true;
+            }
+        }
+        // 勾选保存用户名
+        rememberCheck.addEventListener('change', function () {
+            if (this.checked && username.value.trim()) {
+                localStorage.setItem('saveUser', username.value.trim());
+            } else {
+                localStorage.removeItem('saveUser');
+            }
+        })
+    </script>
+</body>
+
+</html>
