@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非遗文化 - 青花瓷</title>
+    <style>
+        /* 全局重置与基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            color: #333;
+            background: #f8fafc;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 顶部导航栏 */
+        .top-nav {
+            background: #4a7c9b;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .top-nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .top-nav .nav-links a {
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .top-nav .nav-links a:hover,
+        .top-nav .nav-links a.active {
+            color: #ffd700;
+        }
+
+        .top-nav .login-btn {
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* 英雄区（Banner） */
+        .hero {
+            position: relative;
+            height: 320px;
+            background: url('img/71.jpg') no-repeat center/cover;
+            background-size: 100% 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 80px;
+            font-weight: bold;
+            font-family: "STKaiti", "KaiTi", "楷体", serif;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+            letter-spacing: 20px;
+            color: #f5f5f8ed;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-family: "STFangsong", "仿宋", serif;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle::before,
+        .hero-subtitle::after {
+            content: '';
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #fff, transparent);
+        }
+
+        .hero-vase {
+            width: 30px;
+            margin: 0 10px;
+        }
+
+        .hero-desc {
+            margin-top: 25px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 3px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 内容容器与页面切换 */
+        .content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .page {
+            display: none;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        /* 首页样式 */
+        .intro-text {
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .history-block {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .history-block img {
+            width: 200px;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .history-text {
+            flex: 1;
+        }
+
+        .history-text h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .history-text p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* 发展历史页面样式 */
+        .history-timeline {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .history-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .history-item h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a4d6e;
+            margin-bottom: 10px;
+        }
+
+        .history-item p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* 瓷型分类页面样式 */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .type-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .type-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .type-card-body {
+            padding: 15px;
+        }
+
+        .type-card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .type-card-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* 青花纹样页面样式 */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .pattern-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .pattern-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .pattern-card-body {
+            padding: 15px;
+        }
+
+        .pattern-card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .pattern-card-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* 制瓷技艺页面样式 */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #4a7c9b;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* 图片放大预览弹窗 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            cursor: pointer;
+        }
+
+        .image-modal.active {
+            display: block;
+            overflow: auto;
+        }
+
+        .modal-scroll-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+            transform-origin: center top;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1002;
+        }
+
+        .modal-close:hover {
+            color: #4a7c9b;
+        }
+
+        .modal-title {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 16px;
+            border-radius: 20px;
+            z-index: 1002;
+        }
+
+        .zoom-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            backdrop-filter: blur(4px);
+        }
+
+        .zoom-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .zoom-reset {
+            width: auto;
+            padding: 0 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .clickable-img {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .clickable-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .top-nav .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .card-grid,
+            .tech-grid,
+            .type-grid,
+            .pattern-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .history-block {
+                flex-direction: column;
+            }
+
+            .history-block img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部导航 -->
+    <div class="top-nav">
+        <!-- 点击logo跳转总首页 index.html -->
+        <div class="logo" onclick="location.href='index.html'">非遗青花瓷</div>
+        <div class="nav-links">
+            <!-- 新增总首页链接 -->
+            <a href="index.html" class="nav-link">总首页</a>
+            <a href="#home" class="nav-link active" data-page="home">青花瓷主页</a>
+            <a href="#history" class="nav-link" data-page="history">发展历史</a>
+            <a href="#type" class="nav-link" data-page="type">瓷型分类</a>
+            <a href="#pattern" class="nav-link" data-page="pattern">青花纹样</a>
+            <a href="#tech" class="nav-link" data-page="tech">制瓷技艺</a>
+            <a href="#protect" class="nav-link" data-page="protect">传承保护</a>
+            <a href="#color" class="nav-link" data-page="color">青花发色</a>
+            <a href="#process" class="nav-link" data-page="process">制作流程</a>
+            <a href="#capital" class="nav-link" data-page="capital">千年瓷都</a>
+            <a href="#contact" class="nav-link" data-page="contact">在线交流</a>
+        </div>
+        <div class="login-btn nav-link" data-page="login">登录</div>
+    </div>
+
+    <!-- 英雄区 -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-title">青花瓷</div>
+            <div class="hero-subtitle">
+                景德镇陶瓷文化
+            </div>
+            <div class="hero-desc">白釉青花一火成 · 花从釉里透分明</div>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content">
+        <!-- 首页 -->
+        <div class="page active" id="home" data-id="home">
+            <h2 class="section-title">瓷上青花 千年雅韵</h2>
+            <p class="intro-text">
+                青花瓷是中国陶瓷艺术的巅峰之作，以"白釉青花，青料呈色"为核心特征，钴料在高温下绽放出浓艳明快的蓝色纹样。其技艺源于唐代，元代走向成熟，明清达到鼎盛。它不仅是中国瓷器的"名片"，更曾通过海上丝绸之路远销全球，成为东西方文化交流的重要载体。
+            </p>
+            <div class="card-grid">
+                <div class="card">
+                    <img src="img/21.jpg" alt="核心制瓷流程">
+                    <div class="card-body">
+                        <h3 class="card-title">核心制瓷流程</h3>
+                        <p class="card-desc">
+                            青花瓷制作需经"选料-制坯-绘青-施釉-烧制"五大核心工序，全凭手工完成。选料需精选高岭土与瓷石，确保胎质细腻；制坯分"拉坯"（塑型）与"利坯"（修坯），误差需控制在毫米内，成败全凭匠人对火候的把控。
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/19.jpg" alt="文化寓意与象征">
+                    <div class="card-body">
+                        <h3 class="card-title">文化寓意与象征</h3>
+                        <p class="card-desc">
+                            青花纹样承载深厚文化内涵："缠枝莲"象征吉祥连绵、生生不息；"龙纹"（官窑常用）代表皇权尊贵与国泰民安；"山水纹"蕴含文人"寄情山水"的情怀；"鱼藻纹"寓意"年年有余"。不同时代纹样各具特色。
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/18.jpg" alt="技艺传承难点">
+                    <div class="card-body">
+                        <h3 class="card-title">技艺传承难点</h3>
+                        <p class="card-desc">
+                            青花瓷技艺传承面临多重挑战：一是工序复杂，全流程需掌握72道细分技艺，仅"利坯"一项就需3-5年才能熟练；二是核心技艺"口传心授"，如钴料调配比例、窑火温度判断，无文字记载三是年轻一代耐不住"慢功夫"。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="history-block">
+                <img src="img/20.jpg" alt="青花瓷立瓶">
+                <div class="history-text">
+                    <h3>青花瓷的千年发展史</h3>
+                    <p>青花瓷的起源可追溯至唐代，河南巩县窑已烧制出原始青花（釉下钴蓝彩绘），但工艺尚不成熟；宋代青花瓷处于萌芽期，仅在浙江，元代是青花瓷的"黄金时代"，景德镇成为制瓷中心，引入波斯"苏麻离青"料，烧制出如《鬼谷子下山罐》般的传世珍品，奠定青花瓷的艺术地位。
+                    </p>
+                    <p>明代青花瓷步入鼎盛：永乐、宣德时期的"青花留白""晕散效果"堪称一绝；清代创新不断，康熙朝发明"青花分水"技法（一层釉料分出五色浓淡），雍正朝青花雅致脱俗，乾隆朝青花繁复华丽。2006年景德镇手工制瓷技艺入选非遗后，匠人通过"传统技法+现代设计"，让千年青花在当代焕发生机，如今青花瓷不仅是收藏品，更成为国礼走向世界。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 青花瓷名家展示 -->
+            <div class="celebrity-section" style="margin-top: 30px;">
+                <h2 class="section-title">青花瓷名家</h2>
+                <div class="celebrity-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                    <div class="celebrity-card"
+                        style="background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(74,124,155,0.12);">
+                        <img src="img/1.2.1.jpg" alt="王锡良" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: center;">
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"><a
+                                    href="wangxiliang.html" style="color: #4a7c9b; text-decoration: none;">王锡良</a></h3>
+                            <p style="font-size: 13px; color: #666; line-height: 1.5;">
+                                中国工艺美术大师，青花泰斗，擅长人物山水题材，作品被多家博物馆收藏。</p>
+                        </div>
+                    </div>
+                    <div class="celebrity-card"
+                        style="background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(74,124,155,0.12);">
+                        <img src="img/1.2.2.jpg" alt="张松茂" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: center;">
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"><a
+                                    href="zhangsongmao.html" style="color: #4a7c9b; text-decoration: none;">张松茂</a></h3>
+                            <p style="font-size: 13px; color: #666; line-height: 1.5;">陶瓷美术家，擅长青花山水，作品多次作为国礼赠送外国元首。</p>
+                        </div>
+                    </div>
+                    <div class="celebrity-card"
+                        style="background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(74,124,155,0.12);">
+                        <img src="img/1.2.3.jpg" alt="刘远长" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: center;">
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"><a
+                                    href="liuyuanzhang.html" style="color: #4a7c9b; text-decoration: none;">刘远长</a></h3>
+                            <p style="font-size: 13px; color: #666; line-height: 1.5;">国家级非遗传承人，以青花人物雕塑闻名，开创青花艺术新境界。</p>
+                        </div>
+                    </div>
+                    <div class="celebrity-card"
+                        style="background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(74,124,155,0.12);">
+                        <img src="img/1.2.4.jpg" alt="戴荣华" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: center;">
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"><a
+                                    href="daironghua.html" style="color: #4a7c9b; text-decoration: none;">戴荣华</a></h3>
+                            <p style="font-size: 13px; color: #666; line-height: 1.5;">中国工艺美术大师，青花彩绘名家，作品兼具传统与创新。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 发展历史 -->
+        <div class="page" id="history" data-id="history">
+            <h2 class="section-title">发展历史</h2>
+            <div class="history-timeline">
+                <div class="history-item">
+                    <h3>唐代：萌芽初现（公元618-907年）</h3>
+                    <p>青花瓷最早可追溯至唐代，河南巩县窑已能烧制出釉下钴蓝彩绘的原始青花瓷，这是青花瓷的雏形。此时工艺尚不成熟，钴料发色不稳定，产量稀少，并未形成主流瓷器品类。</p>
+                </div>
+                <div class="history-item">
+                    <h3>宋代：缓慢发展（公元960-1279年）</h3>
+                    <p>宋代青花瓷处于萌芽期，主要在浙江等地有少量生产。工艺仍显粗糙，纹饰简单，以花卉、卷草纹为主，并未形成规模化生产，也未成为当时瓷器的主流品类。</p>
+                </div>
+                <div class="history-item">
+                    <h3>元代：黄金时代（公元1271-1368年）</h3>
+                    <p>元代是青花瓷走向成熟的关键时期，景德镇成为全国制瓷中心。引入波斯"苏麻离青"料，烧制出器型大气、发色浓艳的元青花，如《鬼谷子下山罐》等传世珍品，奠定了青花瓷的艺术地位，青花瓷开始通过海上丝绸之路远销海外。
+                    </p>
+                </div>
+                <div class="history-item">
+                    <h3>明代：鼎盛时期（公元1368-1644年）</h3>
+                    <p>明代青花瓷步入鼎盛：永乐、宣德时期的青花以"苏麻离青"料绘制，发色浓艳、晕散自然，被誉为"青花之冠"；成化时期青花淡雅细腻，风格清新；嘉万时期回青料盛行，发色蓝中泛紫，纹饰繁复，青花瓷成为宫廷与民间的主流瓷器。
+                    </p>
+                </div>
+                <div class="history-item">
+                    <h3>清代：创新与成熟（公元1636-1912年）</h3>
+                    <p>清代青花瓷在明代基础上继续创新，康熙朝发明"青花分水"技法，能在一层釉料中分出五色浓淡，层次丰富；雍正朝青花雅致脱俗，乾隆朝青花繁复华丽，工艺达到顶峰，青花瓷成为中国瓷器的代表，享誉世界。
+                    </p>
+                </div>
+                <div class="history-item">
+                    <h3>近现代：传承与复兴（公元1912年至今）</h3>
+                    <p>近代以来，青花瓷技艺历经波折，2006年景德镇手工制瓷技艺入选国家级非物质文化遗产。匠人通过"传统技法+现代设计"，让千年青花在当代焕发生机，青花瓷不仅是收藏品，更成为国礼与文化符号，走向世界。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 瓷型分类 -->
+        <div class="page" id="type" data-id="type">
+            <h2 class="section-title">瓷型分类</h2>
+            <div class="type-grid">
+                <div class="type-card">
+                    <img src="img/23.png" alt="赏瓶">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">赏瓶</h3>
+                        <p class="type-card-desc">
+                            赏瓶是清代雍正朝出现的典型器型，器型规整，颈部较短，腹部圆润，圈足外撇，主要用于宫廷赏赐，纹饰多为缠枝莲纹，寓意"清廉"，是清代官窑青花的经典器型。</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/22.png" alt="梅瓶">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">梅瓶</h3>
+                        <p class="type-card-desc">
+                            梅瓶小口、丰肩、瘦底、圈足，因口小只能插梅枝而得名，最早出现于唐代，宋元时期流行，明清时期成为经典器型，多用于储酒，纹饰多为山水、人物、花鸟，是青花瓷中最具代表性的器型之一。</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/24.jpg" alt="玉壶春瓶">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">玉壶春瓶</h3>
+                        <p class="type-card-desc">
+                            玉壶春瓶由唐代寺院里的净水瓶演变而来，基本形制为撇口、细颈、垂腹、圈足，器型优美，线条流畅，是中国瓷器中最经典的器型之一，明清时期青花玉壶春瓶纹饰多为缠枝莲、牡丹、花鸟等。</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/25.png" alt="将军罐">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">将军罐</h3>
+                        <p class="type-card-desc">
+                            将军罐因盖像将军的头盔而得名，器型高大，直口、丰肩、敛腹、圈足，盖为宝珠顶钮，最早出现于明代嘉靖朝，清代顺治、康熙朝流行，多用于储物，纹饰多为人物、山水、花鸟，是清代青花的典型器型。
+                        </p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/26.jpg" alt="蒜头瓶">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">蒜头瓶</h3>
+                        <p class="type-card-desc">
+                            蒜头瓶因口部像蒜头而得名，器型为小口、长颈、圆腹、圈足，最早出现于汉代，明清时期流行，青花蒜头瓶纹饰多为缠枝莲、花鸟、人物，是明清官窑青花的经典器型之一。</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/27.png" alt="天球瓶">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">天球瓶</h3>
+                        <p class="type-card-desc">
+                            天球瓶因腹部像天球而得名，器型为小口、直颈、丰肩、假圈足、腹似圆球，最早出现于明代永乐朝，受西亚文化影响，青花天球瓶纹饰多为云龙、缠枝莲、花鸟，是明代官窑青花的经典器型。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 青花纹样 -->
+        <div class="page" id="pattern" data-id="pattern">
+            <h2 class="section-title">青花纹样</h2>
+            <div class="pattern-grid">
+                <div class="pattern-card">
+                    <img src="img/28.jpg" alt="缠枝莲纹">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">缠枝莲纹</h3>
+                        <p class="pattern-card-desc">
+                            缠枝莲纹是青花瓷中最常见的纹饰之一，以莲花为主体，枝蔓缠绕，连绵不断，象征"吉祥连绵、生生不息"，寓意清廉高洁，是明清官窑青花的核心纹饰，多用于赏瓶、玉壶春瓶等器型。</p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/29.png" alt="龙纹">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">龙纹</h3>
+                        <p class="pattern-card-desc">
+                            龙纹是官窑青花瓷的专属纹饰，象征皇权尊贵与国泰民安，分为云龙纹、海水龙纹、穿花龙纹等，元代龙纹矫健有力，明代龙纹凶猛威严，清代龙纹繁复华丽，是青花瓷中最具等级的纹饰。</p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/30.png" alt="山水纹">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">山水纹</h3>
+                        <p class="pattern-card-desc">
+                            山水纹是青花瓷中极具文人气息的纹饰，以山水、树木、亭台、人物为主体，蕴含文人"寄情山水"的情怀，清代康熙朝"青花分水"技法成熟后，山水纹层次丰富，意境深远，是清代青花的经典纹饰。
+                        </p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/31.jpg" alt="鱼藻纹">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">鱼藻纹</h3>
+                        <p class="pattern-card-desc">
+                            鱼藻纹以鱼和水草为主体，鱼谐音"余"，寓意"年年有余"，水草象征生机盎然，元代鱼藻纹简洁古朴，明代鱼藻纹生动活泼，清代鱼藻纹繁复细腻，是民窑青花中最受欢迎的纹饰之一。</p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/32.jpg" alt="人物纹">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">人物纹</h3>
+                        <p class="pattern-card-desc">
+                            人物纹以历史故事、戏曲人物、仕女、婴戏为主体，元代人物纹粗犷豪放，明代人物纹细腻生动，清代人物纹繁复华丽，如《鬼谷子下山罐》《萧何月下追韩信》等，是青花瓷中最具故事性的纹饰。</p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/33.jpg" alt="花鸟纹">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">花鸟纹</h3>
+                        <p class="pattern-card-desc">
+                            花鸟纹以花卉和鸟类为主体，象征"鸟语花香、吉祥如意"，元代花鸟纹简洁古朴，明代花鸟纹生动活泼，清代花鸟纹细腻写实，是民窑青花中最常见的纹饰之一，多用于碗、盘、瓶等器型。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 制瓷技艺 -->
+        <div class="page" id="tech" data-id="tech">
+            <h2 class="section-title">制瓷技艺</h2>
+            <div class="tech-grid">
+                <div class="card">
+                    <img src="img/1.png" alt="核心工具">
+                    <div class="card-body">
+                        <h3 class="card-title">核心工具：瓷匠的"匠心利器"</h3>
+                        <p class="card-desc">
+                            青花瓷制瓷工具讲究"专器专用"，每一件都凝聚千年智慧。拉坯用"辘轳车"、喷釉用"喷釉壶"、利坯用"利坯刀"、烧制用"匣钵"，老匠人还会用"火照"监测窑温。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/2.png" alt="原料选择">
+                    <div class="card-body">
+                        <h3 class="card-title">原料选择：青花瓷的"品质根基"</h3>
+                        <p class="card-desc">
+                            青花瓷原料需"精挑细选"，直接决定器物成败。胎料用"高岭土+瓷石"二元配方，景德镇高岭土含铁量低(<1%)，青白釉则添温润质感，原料需经"淘洗-研磨-陈腐"三步，陈腐时间越长(通常1-3年)，胎釉越细腻。<
+                                /p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/3.png" alt="关键步骤">
+                    <div class="card-body">
+                        <h3 class="card-title">关键步骤：千锤百炼的"成瓷之路"</h3>
+                        <p class="card-desc">
+                            青花瓷制作需经"练泥-制坯-绘青-施釉-烧制-开窑"六大核心步骤，全程手工把控。练泥要"揉泥排气"，制坯分"拉坯"和"利坯"，需手眼协调控制厚度和"利坯还"(成品率仅60%-70%)。
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/4.png" alt="纹样技法">
+                    <div class="card-body">
+                        <h3 class="card-title">纹样技法：青花的"笔墨艺术"</h3>
+                        <p class="card-desc">
+                            青花纹样绘制有独特技法体系，核心是"青花绘画"与"料性把控"。最经典的是"分水法"，通过控制笔锋含料量，在胎体上分出"头浓、二浓、正浓、正淡、影淡"五色浓淡，国画水墨效果需匠人兼具绘画功底与历史审美。
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/5.png" alt="独门绝技">
+                    <div class="card-body">
+                        <h3 class="card-title">独门绝技：瓷匠的"看家本领"</h3>
+                        <p class="card-desc">
+                            青花瓷技艺中藏着诸多"独门绝技"，需数十年经验积累。"风眼洞利坯"是一绝，能将坯体修至"薄如纸、透光影"，最薄处0.5毫米，如明代永乐薄胎青花瓷；"苏麻离青晕散控制"需精准掌握料水比例，清代雍正朝最精湛。
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/6.png" alt="流派特色">
+                    <div class="card-body">
+                        <h3 class="card-title">流派特色：窑口的"地域印记"</h3>
+                        <p class="card-desc">
+                            青花瓷因窑口不同形成鲜明流派，核心差异在"胎釉特性"。景德镇窑是主流，以"白胎青花瓷、薄胎青花"为特色，技艺全面，尤其擅长分水法与薄胎瓷器，是明清官窑所在地；宣德官窑(景德镇体系)规整度极高。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 传承保护 -->
+        <div class="page" id="protect" data-id="protect">
+            <h2 class="section-title">传承保护</h2>
+            <div class="history-timeline">
+                <div class="history-item">
+                    <h3>非遗现状与危机</h3>
+                    <p>景德镇手工制瓷工序繁杂、学习周期漫长，年轻从业者流失严重，传统口传心授的传承模式面临断代。部分古法技艺濒临失传，仿古乱象也对正统青花文化造成冲击，非遗保护工作迫在眉睫。</p>
+                </div>
+                <div class="history-item">
+                    <h3>保护举措</h3>
+                    <p>当地建立非遗传承基地、大师工作室，开展师徒结对传承；开设陶瓷专业院校与研学课程，面向青少年普及青花文化。同时出台相关政策扶持老匠人，记录整理古法技艺文献，留存珍贵工艺资料。</p>
+                </div>
+                <div class="history-item">
+                    <h3>创新发展</h3>
+                    <p>如今行业推行"传统+现代"融合路线，将青花纹样融入文创、家居、服饰等领域，让非遗走出展馆、走进日常生活。线上展览、直播工艺制作等形式，也让千年青花被更多人了解与喜爱。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 青花发色 -->
+        <div class="page" id="color" data-id="color">
+            <h2 class="section-title">青花发色</h2>
+            <p>青花发色是青花瓷的灵魂，不同的钴料与烧制工艺造就了多样的发色效果，以下是主要发色种类：</p>
+            <div class="color-item"
+                style="display: flex; gap: 20px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="img/34.jpg" alt="苏麻离青" class="color-img"
+                    style="width: 200px; height: 150px; object-fit: cover; border-radius: 4px;">
+                <div class="color-info" style="flex: 1;">
+                    <div class="color-name" style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">苏麻离青</div>
+                    <div class="color-period" style="font-size: 14px; color: #666; margin-bottom: 8px;">元代后期——明永宣时期
+                    </div>
+                    <div class="color-desc" style="font-size: 14px; line-height: 1.6;">
+                        苏麻离青即苏泥麻青、苏勃泥青等，此料低锰高铁类钴料，故青花呈色浓重青翠，有“铁锈斑痕”，俗称“锡光”。</div>
+                </div>
+            </div>
+            <div class="color-item"
+                style="display: flex; gap: 20px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="img/35.jpg" alt="平等青" class="color-img"
+                    style="width: 200px; height: 150px; object-fit: cover; border-radius: 4px;">
+                <div class="color-info" style="flex: 1;">
+                    <div class="color-name" style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">平等青</div>
+                    <div class="color-period" style="font-size: 14px; color: #666; margin-bottom: 8px;">明成化时期</div>
+                    <div class="color-desc" style="font-size: 14px; line-height: 1.6;">
+                        平等青，又称陂塘青，产于江西乐平。明“空白期”晚期和成化、弘治、正德早期时使用。此料呈色淡雅、青亮、稳定，尤其使成化青花器名噪一时。</div>
+                </div>
+            </div>
+            <div class="color-item"
+                style="display: flex; gap: 20px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="img/36.png" alt="回青" class="color-img"
+                    style="width: 200px; height: 150px; object-fit: cover; border-radius: 4px;">
+                <div class="color-info" style="flex: 1;">
+                    <div class="color-name" style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">回青</div>
+                    <div class="color-period" style="font-size: 14px; color: #666; margin-bottom: 8px;">明嘉万时期</div>
+                    <div class="color-desc" style="font-size: 14px; line-height: 1.6;">
+                        成熟的青花瓷出现在元代的景德镇。元青花瓷的胎由于采用了“瓷石+高岭土”的二元配方，产于西域、新疆、云南等多种说法。此料发色青偏蓝紫，若单独使用则散而不收，故多与石子青混合使用。</div>
+                </div>
+            </div>
+            <div class="color-item"
+                style="display: flex; gap: 20px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="img/37.png" alt="石子青" class="color-img"
+                    style="width: 200px; height: 150px; object-fit: cover; border-radius: 4px;">
+                <div class="color-info" style="flex: 1;">
+                    <div class="color-name" style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">石子青</div>
+                    <div class="color-period" style="font-size: 14px; color: #666; margin-bottom: 8px;">明清两代民窑</div>
+                    <div class="color-desc" style="font-size: 14px; line-height: 1.6;">
+                        石子青，又称石青，产于江西高安、宜丰、上高一带。此料单独使用时，青花发色灰暗甚至发黑，明清二代民窑普遍采用此料，官窑则用于与回青调和使用。</div>
+                </div>
+            </div>
+            <div class="color-item"
+                style="display: flex; gap: 20px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="img/38.jpg" alt="浙料" class="color-img"
+                    style="width: 200px; height: 150px; object-fit: cover; border-radius: 4px;">
+                <div class="color-info" style="flex: 1;">
+                    <div class="color-name" style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">浙料</div>
+                    <div class="color-period" style="font-size: 14px; color: #666; margin-bottom: 8px;">明万历中期——清代</div>
+                    <div class="color-desc" style="font-size: 14px; line-height: 1.6;">
+                        浙料，又称浙青，产于浙江绍兴、金华一带。国产料中以浙料最为上乘，其发色青翠，明代万历中期至清代，景德镇官窑青花器均采用此料。</div>
+                </div>
+            </div>
+            <div class="color-item"
+                style="display: flex; gap: 20px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="img/39.png" alt="珠明料" class="color-img"
+                    style="width: 200px; height: 150px; object-fit: cover; border-radius: 4px;">
+                <div class="color-info" style="flex: 1;">
+                    <div class="color-name" style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">珠明料</div>
+                    <div class="color-period" style="font-size: 14px; color: #666; margin-bottom: 8px;">清康熙时期</div>
+                    <div class="color-desc" style="font-size: 14px; line-height: 1.6;">
+                        珠明料，产于云南宣威、会泽、宜良等县，其中以宣威料最好。此料发色明丽纯正，康熙青花多采用此料。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 制作流程 -->
+        <div class="page" id="process" data-id="process">
+            <h2 class="section-title">制作流程</h2>
+            <div class="process-flow" style="margin-bottom: 20px; text-align: center;">
+                <img src="img/40.jpg" alt="制作流程" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="process-list" style="font-size: 14px; line-height: 1.8;">
+                <ol style="padding-left: 20px;">
+                    <li style="margin-bottom: 10px;"><strong>揉泥</strong>：将泥料揉搓，排出空气，使泥料紧致，防止坯体在烧制时破裂变形。</li>
+                    <li style="margin-bottom: 10px;"><strong>做坯</strong>：根据设计好的器型，用手工或机制成初步的坯体。</li>
+                    <li style="margin-bottom: 10px;"><strong>印坯</strong>：将半干的坯体置于土制磨具上按拍，使坯体周正匀结。</li>
+                    <li style="margin-bottom: 10px;"><strong>利坯</strong>：对坯体进行精修，使其表面光滑，器型圆润。</li>
+                    <li style="margin-bottom: 10px;"><strong>上釉</strong>：包括蘸釉和施外釉，里釉通常采用荡釉法，外釉则采用浸釉法。施釉的方法有喷、吹、浸、荡、落等。
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>画坯</strong>：在坯体上用青花料绘制图案。青花料事先需要研磨和配方，绘制时需要使用细毛笔，手工细致地描绘出各种图案和纹饰。
+                    </li>
+                    <li style="margin-bottom: 10px;"><strong>写底款</strong>：在瓷器底部写上制作日期或工作室名称。这一步是为了标识瓷器的出处。</li>
+                    <li style="margin-bottom: 10px;"><strong>挖底足</strong>：处理瓷器底部的形状，使其稳定。这一步是为了使瓷器在使用时更加稳固。</li>
+                    <li style="margin-bottom: 10px;"><strong>装窑</strong>：将瓷器装入匣中，准备烧制。烧窑时需要控制温度和时间，以确保瓷器的质量。</li>
+                    <li style="margin-bottom: 10px;"><strong>烧窑</strong>：以高温烧制瓷器，通常在1200-1300摄氏度之间进行烧制，使坯体和釉料融为一体。</li>
+                    <li style="margin-bottom: 10px;"><strong>出窑</strong>：烧制完成后取出瓷器，进行检验和打磨，确保瓷器的质量，确保其完美无瑕。</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 千年瓷都 -->
+        <div class="page" id="capital" data-id="capital">
+            <h2 class="section-title">千年瓷都——景德镇</h2>
+            <div class="culture-item" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="img/41.jpg" alt="景德镇古窑遗址" class="culture-img"
+                    style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;">
+                <div class="culture-title" style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">因瓷而名，因瓷而兴
+                </div>
+                <div class="culture-desc" style="font-size: 14px; line-height: 1.6;">
+                    青花是景德镇的四大传统名瓷之一，起始于唐宋，成熟于元代。原始青花瓷于唐宋已见端倪，成熟的青花瓷则出现在元代景德镇的湖田窑。青花瓷是用含氧化钴的钴矿为原料，在陶瓷坯体上描绘纹饰，再罩上一层透明釉，经高温还原焰一次烧成。景德镇青花瓷在原料，工艺，设计等等领域都是国内首屈一指的，从元代青花瓷一直流传到2012年，景德镇青花瓷的历史悠久，源远流长是色当中国当中独有的文化。
+                </div>
+            </div>
+            <div class="culture-item" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="img/42.jpg" alt="景德镇古作坊" class="culture-img"
+                    style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;">
+                <div class="culture-title" style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">
+                    景德镇青花瓷是中国瓷器的主流品种之一</div>
+                <div class="culture-desc" style="font-size: 14px; line-height: 1.6;">
+                    景德镇青花瓷，作为中国瓷器中的瑰宝，以其蓝白相映、晶莹明快的特点深受喜爱。它始创于元代，到明、清两代达到高峰，是景德镇的代表性产品之一。青花瓷的制作工艺复杂，使用含氧化钴的钴矿在白泥上进行绘画装饰，再罩以透明釉，经过高温烧制，呈现出青翠欲滴的蓝色花纹，具有着色力强、发色鲜艳、烧成率高、呈色稳定的特点。景德镇青花瓷不仅在中国瓷器史上占有重要地位，其精美绝伦的艺术价值也使其成为世界文化宝库中的瑰宝。
+                </div>
+            </div>
+            <div class="culture-item" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="img/43.jpg" alt="景德镇坯房" class="culture-img"
+                    style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;">
+                <div class="culture-title" style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">精湛工艺与深厚底蕴
+                </div>
+                <div class="culture-desc" style="font-size: 14px; line-height: 1.6;">
+                    景德镇青花瓷的制作工艺包括72道工序，其中青花瓷的工艺与普通陶瓷大体相当，但其绘画艺术设计的文化内涵和艺术特质使其尤为珍贵。青花瓷的成功率低，制作过程中需要考虑众多因素，如青花的发色、窑温、釉面厚度等，这些都增加了青花瓷的珍贵性。景德镇青花瓷不仅在国内享有盛誉，其精湛的工艺和深厚的文化底蕴也使其成为国际上备受推崇的艺术品。
+                </div>
+            </div>
+        </div>
+
+        <!-- 在线交流 -->
+        <div class="page" id="contact" data-id="contact">
+            <h2 class="section-title">在线交流</h2>
+            <form class="contact-form" style="max-width: 500px; margin: 0 auto; font-size: 14px;">
+                <div class="form-item" style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <label for="nickname" style="width: 60px; text-align: right;">昵称：</label>
+                    <input type="text" id="nickname" placeholder="请输入您的昵称"
+                        style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                </div>
+                <div class="form-item" style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <label for="email" style="width: 60px; text-align: right;">邮箱：</label>
+                    <input type="email" id="email" placeholder="请输入您的邮箱"
+                        style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                </div>
+                <div class="form-item" style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <label for="message" style="width: 60px; text-align: right;">留言：</label>
+                    <textarea id="message" placeholder="有什么问题请留言，我们会尽快给你回复"
+                        style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; height: 120px; resize: none;"></textarea>
+                </div>
+                <div class="form-buttons" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+                    <button type="submit" class="form-btn"
+                        style="padding: 8px 20px; background: #4a7c9b; color: #fff; border: none; border-radius: 4px; cursor: pointer;">提交</button>
+                    <button type="reset" class="form-btn"
+                        style="padding: 8px 20px; background: #4a7c9b; color: #fff; border: none; border-radius: 4px; cursor: pointer;">清空</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 登录 -->
+        <div class="page" id="login" data-id="login">
+            <h2 class="section-title">用户登录</h2>
+            <div class="auth-box"
+                style="max-width: 400px; margin: 0 auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div class="form-item" style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">用户名</label>
+                    <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+                        placeholder="请输入用户名">
+                </div>
+                <div class="form-item" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 5px;">密码</label>
+                    <input type="password"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+                        placeholder="请输入密码">
+                </div>
+                <button
+                    style="width: 100%; padding: 10px; background: #4a7c9b; color: #fff; border: none; border-radius: 4px; cursor: pointer;">登录</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>非遗青花瓷传承与保护</p>
+        <p style="margin-top: 8px;"><a href="guanyuwomen.html"
+                style="color: #fff; text-decoration: underline; margin: 0 8px;">关于我们</a> | <a href="lianxiwomen.html"
+                style="color: #fff; text-decoration: underline; margin: 0 8px;">联系我们</a></p>
+    </div>
+
+    <!-- 图片放大预览弹窗 -->
+    <div class="image-modal" id="imageModal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <div class="modal-scroll-wrapper" id="modalScrollWrapper">
+            <img class="modal-content" id="modalImage">
+        </div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomOut" title="缩小">-</button>
+            <button class="zoom-btn zoom-reset" id="zoomReset">100%</button>
+            <button class="zoom-btn" id="zoomIn" title="放大">+</button>
+        </div>
+    </div>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('href') === 'index.html') return;
+                e.preventDefault();
+                const targetPage = link.getAttribute('data-page');
+
+                navLinks.forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+
+                pages.forEach(page => {
+                    if (page.getAttribute('data-id') === targetPage) {
+                        page.classList.add('active');
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // 图片放大预览功能
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalClose = document.getElementById('modalClose');
+        const modalWrapper = document.getElementById('modalScrollWrapper');
+        const zoomInBtn = document.getElementById('zoomIn');
+        const zoomOutBtn = document.getElementById('zoomOut');
+        const zoomResetBtn = document.getElementById('zoomReset');
+
+        let currentScale = 1;
+        const scaleStep = 0.25;
+        const minScale = 0.5;
+        const maxScale = 2;
+
+        function updateZoom() {
+            currentScale = Math.max(minScale, Math.min(maxScale, currentScale));
+            modalImg.style.transform = `scale(${currentScale})`;
+            zoomResetBtn.textContent = Math.round(currentScale * 100) + '%';
+        }
+
+        function resetZoom() {
+            currentScale = 1;
+            modalImg.style.transform = '';
+            zoomResetBtn.textContent = '100%';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const images = document.querySelectorAll('img:not(.modal-content)');
+            images.forEach(img => {
+                img.classList.add('clickable-img');
+                img.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    modalImg.src = this.src;
+                    modalTitle.textContent = this.alt || '图片预览';
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    resetZoom();
+                });
+            });
+        });
+
+        // 滚轮缩放
+        modal.addEventListener('wheel', function (e) {
+            if (!modal.classList.contains('active')) return;
+            if (e.target === modalClose || e.target.closest('.zoom-controls')) return;
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -scaleStep : scaleStep;
+            currentScale += delta;
+            updateZoom();
+        });
+
+        // 按钮缩放
+        zoomInBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            currentScale += scaleStep;
+            updateZoom();
+        });
+
+        zoomOutBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            currentScale -= scaleStep;
+            updateZoom();
+        });
+
+        zoomResetBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            resetZoom();
+        });
+
+        // 拖拽移动
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
+
+        modal.addEventListener('mousedown', function (e) {
+            if (!modal.classList.contains('active')) return;
+            if (e.target === modalClose || e.target.closest('.zoom-controls')) return;
+            isDragging = true;
+            modal.style.cursor = 'grabbing';
+            startX = e.pageX - modal.offsetLeft;
+            startY = e.pageY - modal.offsetTop;
+            scrollLeft = modal.scrollLeft;
+            scrollTop = modal.scrollTop;
+        });
+
+        modal.addEventListener('mouseleave', function () {
+            isDragging = false;
+            modal.style.cursor = 'pointer';
+        });
+
+        modal.addEventListener('mouseup', function () {
+            isDragging = false;
+            modal.style.cursor = 'pointer';
+        });
+
+        modal.addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - modal.offsetLeft;
+            const y = e.pageY - modal.offsetTop;
+            const walkX = (x - startX) * 1.5;
+            const walkY = (y - startY) * 1.5;
+            modal.scrollLeft = scrollLeft - walkX;
+            modal.scrollTop = scrollTop - walkY;
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            resetZoom();
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal || e.target === modalWrapper) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
