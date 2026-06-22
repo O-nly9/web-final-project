@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张继青 - 昆曲大师</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            color: #333;
+            background: #f9f5ed;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .top-nav {
+            background: #2c3e50;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .top-nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-nav .nav-links a {
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .hero-image {
+            width: 280px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 15px;
+            font-family: "STKaiti", "KaiTi", serif;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+            font-family: "STFangsong", "仿宋", serif;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 10px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 60px;
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #8c2c2c;
+        }
+
+        .section-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .section-content p {
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements-list li {
+            position: relative;
+            padding-left: 25px;
+            padding-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .achievements-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .work-card {
+            background: #f9f5ed;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .work-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+        }
+
+        .work-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 8px;
+        }
+
+        .work-role {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, #8c2c2c 0%, #a54545 100%);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            color: #fff;
+            font-style: italic;
+            font-family: "STFangsong", "仿宋", serif;
+            line-height: 1.8;
+        }
+
+        .quote-author {
+            margin-top: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .top-nav .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='kunqu.html'">非遗昆曲</div>
+        <div class="nav-links">
+            <a href="kunqu.html">昆曲首页</a>
+            <a href="#life">生平简介</a>
+            <a href="#achievements">艺术成就</a>
+            <a href="#works">代表作品</a>
+            <a href="#legacy">传承影响</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="hero-section">
+            <div class="hero-content">
+                <img src="1.2.10.jpg" alt="张继青" class="hero-image">
+                <div class="hero-info">
+                    <h1 class="hero-title">张继青</h1>
+                    <p class="hero-subtitle">昆曲皇后 · 闺门旦名家</p>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">别名：</span>
+                            <span class="info-value">张忆青</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">籍贯：</span>
+                            <span class="info-value">江苏苏州</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">出生日期：</span>
+                            <span class="info-value">1938年8月</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">职业：</span>
+                            <span class="info-value">昆曲表演艺术家</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">行当：</span>
+                            <span class="info-value">闺门旦、正旦</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">代表作品：</span>
+                            <span class="info-value">《牡丹亭》《玉簪记》《烂柯山》</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote-text">"昆曲的美在于细腻，每一个眼神、每一个身段都要恰到好处，才能传达出人物的内心世界。"</p>
+            <p class="quote-author">—— 张继青</p>
+        </div>
+
+        <div class="section" id="life">
+            <h2 class="section-title">生平简介</h2>
+            <div class="section-content">
+                <p>张继青（1938年－），原名张忆青，江苏苏州人。她出身于昆曲世家，祖父张紫东是著名昆曲票友，父亲张传芳也是昆曲演员。张继青自幼耳濡目染，6岁开始学戏，1952年进入苏州市文联民锋苏剧团（江苏省昆剧院前身）学艺。
+                </p>
+                <p>张继青师承沈传芷、姚传芗等昆曲名家，专攻闺门旦、正旦行当。她的表演细腻传神，唱腔婉转优美，尤其擅长刻画女性角色的内心世界。1960年代初，她主演的《牡丹亭·惊梦》获得广泛赞誉，被誉为"昆曲皇后"。
+                </p>
+                <p>改革开放后，张继青迎来艺术生涯的黄金时期。她多次赴海外演出，将昆曲艺术传播到世界各地。她还积极投身昆曲教育事业，培养了大批优秀青年演员，为昆曲的传承做出了重要贡献。</p>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <h2 class="section-title">艺术成就</h2>
+            <ul class="achievements-list">
+                <li><strong>昆曲皇后：</strong>张继青以精湛的演技和优美的唱腔被誉为"昆曲皇后"，是当代昆曲旦角艺术的代表人物之一。</li>
+                <li><strong>闺门旦典范：</strong>她饰演的杜丽娘、陈妙常等闺门旦角色深入人心，成为昆曲舞台上的经典形象。</li>
+                <li><strong>唱腔艺术：</strong>张继青的唱腔婉转细腻，咬字清晰，行腔流畅，被誉为"水磨腔"的最佳传承者之一。</li>
+                <li><strong>表演风格：</strong>她的表演注重内心体验，善于通过细腻的眼神和身段传达人物情感，极具感染力。</li>
+                <li><strong>艺术创新：</strong>在继承传统的基础上，张继青对昆曲表演进行了适度创新，使古老艺术更具时代感。</li>
+                <li><strong>国际传播：</strong>多次赴美国、日本、欧洲等地演出，为昆曲的国际传播做出了重要贡献。</li>
+            </ul>
+        </div>
+
+        <div class="section" id="works">
+            <h2 class="section-title">代表作品</h2>
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-title">《牡丹亭》</div>
+                    <div class="work-role">饰演 杜丽娘</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《玉簪记》</div>
+                    <div class="work-role">饰演 陈妙常</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《烂柯山》</div>
+                    <div class="work-role">饰演 崔氏</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《渔家乐》</div>
+                    <div class="work-role">饰演 邬飞霞</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《南西厢记》</div>
+                    <div class="work-role">饰演 崔莺莺</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《长生殿》</div>
+                    <div class="work-role">饰演 杨贵妃</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="legacy">
+            <h2 class="section-title">传承影响</h2>
+            <div class="section-content">
+                <p>张继青是当代昆曲艺术的标志性人物，她的表演风格和艺术理念深深影响了一代昆曲演员。她主演的《牡丹亭·惊梦》被视为昆曲旦角表演的教科书，成为后辈演员学习的典范。</p>
+                <p>作为教育家，张继青培养了孔爱萍、钱振荣等一批优秀青年演员，将自己的艺术经验和表演技巧毫无保留地传授给下一代。她的学生们在国内外昆曲舞台上崭露头角，成为昆曲传承的中坚力量。</p>
+                <p>张继青对昆曲艺术的贡献不仅在于表演，更在于她对昆曲文化的热爱和执着。她用一生的时间诠释着昆曲的优雅与美丽，让更多人感受到这门古老艺术的独特魅力。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>百戏之祖 昆曲雅韵 传承中华戏曲文化</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

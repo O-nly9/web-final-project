@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俞振飞 - 昆曲大师</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            color: #333;
+            background: #f9f5ed;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .top-nav {
+            background: #2c3e50;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .top-nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-nav .nav-links a {
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .hero-image {
+            width: 280px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 15px;
+            font-family: "STKaiti", "KaiTi", serif;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+            font-family: "STFangsong", "仿宋", serif;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 10px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 60px;
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #8c2c2c;
+        }
+
+        .section-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .section-content p {
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements-list li {
+            position: relative;
+            padding-left: 25px;
+            padding-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .achievements-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .work-card {
+            background: #f9f5ed;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .work-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+        }
+
+        .work-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 8px;
+        }
+
+        .work-role {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, #8c2c2c 0%, #a54545 100%);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            color: #fff;
+            font-style: italic;
+            font-family: "STFangsong", "仿宋", serif;
+            line-height: 1.8;
+        }
+
+        .quote-author {
+            margin-top: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .top-nav .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='kunqu.html'">非遗昆曲</div>
+        <div class="nav-links">
+            <a href="kunqu.html">昆曲首页</a>
+            <a href="#life">生平简介</a>
+            <a href="#achievements">艺术成就</a>
+            <a href="#works">代表作品</a>
+            <a href="#legacy">传承影响</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="hero-section">
+            <div class="hero-content">
+                <img src="1.2.9.jpg" alt="俞振飞" class="hero-image">
+                <div class="hero-info">
+                    <h1 class="hero-title">俞振飞</h1>
+                    <p class="hero-subtitle">京昆艺术大师 · 昆曲第一小生</p>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">别名：</span>
+                            <span class="info-value">俞远威</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">籍贯：</span>
+                            <span class="info-value">江苏松江</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">出生日期：</span>
+                            <span class="info-value">1902年7月15日</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">逝世日期：</span>
+                            <span class="info-value">1993年7月17日</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">职业：</span>
+                            <span class="info-value">昆曲表演艺术家、教育家</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">代表作品：</span>
+                            <span class="info-value">《牡丹亭》《长生殿》《玉簪记》</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote-text">"昆曲是中国戏曲艺术的精华，每一个字、每一个音符都要细细品味，才能体会其中的韵味。"</p>
+            <p class="quote-author">—— 俞振飞</p>
+        </div>
+
+        <div class="section" id="life">
+            <h2 class="section-title">生平简介</h2>
+            <div class="section-content">
+                <p>俞振飞（1902年－1993年），原名俞远威，字涤盫，号箴非，江苏松江人（今属上海）。他出身于昆曲世家，父亲俞粟庐是著名昆曲唱家，被誉为"江南曲圣"。俞振飞自幼受到家庭熏陶，6岁开始学唱昆曲，14岁登台演出，展现出非凡的艺术天赋。
+                </p>
+                <p>青年时期，俞振飞进入上海暨南大学学习，同时继续钻研昆曲艺术。他曾师从沈月泉、沈传芷等昆曲名家，系统学习昆曲表演艺术。1920年代末，他开始专业从事昆曲表演，与梅兰芳、程砚秋等京剧大师合作演出，逐渐成为昆曲界的领军人物。
+                </p>
+                <p>新中国成立后，俞振飞担任上海昆剧团团长、上海戏曲学校校长等职，致力于昆曲的传承与发展。他培养了大批昆曲人才，为昆曲艺术的延续做出了卓越贡献。1993年，俞振飞在上海逝世，享年91岁。</p>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <h2 class="section-title">艺术成就</h2>
+            <ul class="achievements-list">
+                <li><strong>创立俞派艺术：</strong>俞振飞在继承传统的基础上，融合京剧与昆曲的表演特点，形成了独具特色的"俞派"表演艺术风格，以儒雅俊逸、韵味醇厚著称。</li>
+                <li><strong>京昆兼擅：</strong>他既是昆曲大师，也是京剧名家，能戏极多，昆剧、京剧皆精，是戏曲史上少有的京昆两门抱的艺术大师。</li>
+                <li><strong>唱腔革新：</strong>俞振飞在昆曲唱腔上有所创新，讲究"字正腔圆、腔随字转"，他的演唱婉转细腻，被誉为"水磨腔"的典范。</li>
+                <li><strong>身段表演：</strong>他的身段表演儒雅大方，注重眼神、手势与身段的协调配合，将昆曲的"圆、柔、美"发挥到极致。</li>
+                <li><strong>理论研究：</strong>俞振飞著有《振飞曲谱》《昆曲艺术论》等著作，系统总结了昆曲表演艺术的规律和技巧。</li>
+                <li><strong>教育传承：</strong>作为教育家，他培养了蔡正仁、岳美缇等一批昆曲名家，为昆曲的传承奠定了坚实基础。</li>
+            </ul>
+        </div>
+
+        <div class="section" id="works">
+            <h2 class="section-title">代表作品</h2>
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-title">《牡丹亭》</div>
+                    <div class="work-role">饰演 柳梦梅</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《长生殿》</div>
+                    <div class="work-role">饰演 唐明皇</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《玉簪记》</div>
+                    <div class="work-role">饰演 潘必正</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《紫钗记》</div>
+                    <div class="work-role">饰演 李益</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《西厢记》</div>
+                    <div class="work-role">饰演 张生</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《红鬃烈马》</div>
+                    <div class="work-role">京剧作品</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="legacy">
+            <h2 class="section-title">传承影响</h2>
+            <div class="section-content">
+                <p>俞振飞被誉为"昆曲第一小生"，他的艺术成就和人格魅力深深影响了几代昆曲人。他创立的"俞派"艺术风格，至今仍是昆曲表演的重要流派之一，其弟子遍布海内外。</p>
+                <p>在教育方面，俞振飞注重言传身教，他的教学方法严谨而富有启发性，培养了一批又一批优秀的昆曲演员。他的学生蔡正仁、岳美缇、华文漪等都成为了当代昆曲艺术的中坚力量。</p>
+                <p>俞振飞对昆曲艺术的贡献不仅在于表演和教学，更在于他对昆曲文化的推广和传播。他多次率团赴海外演出，让世界了解中国昆曲的独特魅力。他的艺术精神和文化遗产，将永远激励着后人传承和弘扬昆曲艺术。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>百戏之祖 昆曲雅韵 传承中华戏曲文化</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

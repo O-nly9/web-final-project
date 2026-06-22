@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沈世华 - 昆曲大师</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            color: #333;
+            background: #f9f5ed;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .top-nav {
+            background: #2c3e50;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .top-nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-nav .nav-links a {
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .hero-image {
+            width: 280px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 15px;
+            font-family: "STKaiti", "KaiTi", serif;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+            font-family: "STFangsong", "仿宋", serif;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 10px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 60px;
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #8c2c2c;
+        }
+
+        .section-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .section-content p {
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements-list li {
+            position: relative;
+            padding-left: 25px;
+            padding-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .achievements-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .work-card {
+            background: #f9f5ed;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .work-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+        }
+
+        .work-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 8px;
+        }
+
+        .work-role {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, #8c2c2c 0%, #a54545 100%);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            color: #fff;
+            font-style: italic;
+            font-family: "STFangsong", "仿宋", serif;
+            line-height: 1.8;
+        }
+
+        .quote-author {
+            margin-top: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .top-nav .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='kunqu.html'">非遗昆曲</div>
+        <div class="nav-links">
+            <a href="kunqu.html">昆曲首页</a>
+            <a href="#life">生平简介</a>
+            <a href="#achievements">艺术成就</a>
+            <a href="#works">代表作品</a>
+            <a href="#legacy">传承影响</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="hero-section">
+            <div class="hero-content">
+                <img src="1.2.12.jpg" alt="沈世华" class="hero-image">
+                <div class="hero-info">
+                    <h1 class="hero-title">沈世华</h1>
+                    <p class="hero-subtitle">昆曲旦角名家 · 闺门旦代表</p>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">籍贯：</span>
+                            <span class="info-value">江苏吴江</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">出生日期：</span>
+                            <span class="info-value">1941年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">职业：</span>
+                            <span class="info-value">昆曲表演艺术家</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">行当：</span>
+                            <span class="info-value">闺门旦、花旦</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">师承：</span>
+                            <span class="info-value">朱传茗、沈传芷</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">代表作品：</span>
+                            <span class="info-value">《玉簪记》《牡丹亭》《西厢记》</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote-text">"昆曲是一门需要用心去感受的艺术，每个角色都有她独特的灵魂，需要演员用全部的身心去诠释。"</p>
+            <p class="quote-author">—— 沈世华</p>
+        </div>
+
+        <div class="section" id="life">
+            <h2 class="section-title">生平简介</h2>
+            <div class="section-content">
+                <p>沈世华（1941年－），江苏吴江人，著名昆曲表演艺术家，工闺门旦、花旦。她自幼喜爱戏曲，1954年进入华东戏曲研究院昆曲演员训练班学习，师从朱传茗、沈传芷等昆曲名家，系统学习昆曲表演艺术。</p>
+                <p>沈世华的表演细腻传神，嗓音甜美圆润，尤其擅长刻画大家闺秀的温婉气质。她主演的《玉簪记·琴挑》《牡丹亭·惊梦》等剧目深受观众喜爱，成为昆曲舞台上的经典之作。</p>
+                <p>作为北方昆曲剧院的主要演员，沈世华为昆曲艺术的传播和发展做出了重要贡献。她多次赴海外演出，将昆曲艺术介绍给世界观众，同时也积极参与昆曲教育工作，培养了一批优秀青年演员。</p>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <h2 class="section-title">艺术成就</h2>
+            <ul class="achievements-list">
+                <li><strong>旦角名家：</strong>沈世华是当代昆曲旦角艺术的代表人物之一，以精湛的演技和优美的唱腔著称。</li>
+                <li><strong>闺门旦典范：</strong>她饰演的陈妙常、杜丽娘等闺门旦角色温婉动人，成为昆曲舞台上的经典形象。</li>
+                <li><strong>唱腔艺术：</strong>沈世华的唱腔婉转细腻，咬字清晰，行腔流畅，极具艺术感染力。</li>
+                <li><strong>表演风格：</strong>她的表演注重细节刻画，善于通过眼神和身段传达人物的内心世界。</li>
+                <li><strong>艺术创新：</strong>在继承传统的基础上，沈世华对昆曲表演进行了有益的探索和创新。</li>
+                <li><strong>国际传播：</strong>多次赴海外演出，为昆曲的国际传播做出了积极贡献。</li>
+            </ul>
+        </div>
+
+        <div class="section" id="works">
+            <h2 class="section-title">代表作品</h2>
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-title">《玉簪记》</div>
+                    <div class="work-role">饰演 陈妙常</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《牡丹亭》</div>
+                    <div class="work-role">饰演 杜丽娘</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《西厢记》</div>
+                    <div class="work-role">饰演 崔莺莺</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《长生殿》</div>
+                    <div class="work-role">饰演 杨贵妃</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《桃花扇》</div>
+                    <div class="work-role">饰演 李香君</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《墙头马上》</div>
+                    <div class="work-role">饰演 李千金</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="legacy">
+            <h2 class="section-title">传承影响</h2>
+            <div class="section-content">
+                <p>沈世华是当代昆曲旦角艺术的重要传承者，她的表演风格和艺术理念对年轻一代昆曲演员产生了深远影响。她主演的《玉簪记》等剧目成为昆曲教学的重要范本。</p>
+                <p>作为北方昆曲剧院的资深艺术家，沈世华参与了大量昆曲经典剧目的复排和演出，为昆曲艺术的保存和发展做出了重要贡献。她的艺术成就得到了业界和观众的广泛认可。</p>
+                <p>在教育领域，沈世华积极传授昆曲表演技艺，培养了一批优秀青年演员。她的学生们在昆曲舞台上崭露头角，成为昆曲传承的新生力量。沈世华用自己的艺术实践延续着昆曲艺术的辉煌。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>百戏之祖 昆曲雅韵 传承中华戏曲文化</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

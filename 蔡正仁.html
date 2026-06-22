@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蔡正仁 - 昆曲大师</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            color: #333;
+            background: #f9f5ed;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .top-nav {
+            background: #2c3e50;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .top-nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-nav .nav-links a {
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .hero-image {
+            width: 280px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 15px;
+            font-family: "STKaiti", "KaiTi", serif;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+            font-family: "STFangsong", "仿宋", serif;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 10px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 60px;
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #8c2c2c;
+        }
+
+        .section-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .section-content p {
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements-list li {
+            position: relative;
+            padding-left: 25px;
+            padding-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .achievements-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .work-card {
+            background: #f9f5ed;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .work-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 8px;
+        }
+
+        .work-role {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, #8c2c2c 0%, #a54545 100%);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            color: #fff;
+            font-style: italic;
+            font-family: "STFangsong", "仿宋", serif;
+        }
+
+        .quote-author {
+            margin-top: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="logo" onclick="location.href='kunqu.html'">非遗昆曲</div>
+        <div class="nav-links">
+            <a href="kunqu.html">昆曲首页</a>
+            <a href="#life">生平简介</a>
+            <a href="#achievements">艺术成就</a>
+            <a href="#works">代表作品</a>
+            <a href="#legacy">传承影响</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="hero-section">
+            <div class="hero-content">
+                <img src="1.2.11.jpg" alt="蔡正仁" class="hero-image">
+                <div class="hero-info">
+                    <h1 class="hero-title">蔡正仁</h1>
+                    <p class="hero-subtitle">俞派传人 · 昆曲小生名家</p>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label">籍贯：</span><span class="info-value">浙江吴兴</span>
+                        </div>
+                        <div class="info-item"><span class="info-label">出生日期：</span><span
+                                class="info-value">1941年7月</span></div>
+                        <div class="info-item"><span class="info-label">职业：</span><span
+                                class="info-value">昆曲表演艺术家</span></div>
+                        <div class="info-item"><span class="info-label">行当：</span><span class="info-value">小生</span>
+                        </div>
+                        <div class="info-item"><span class="info-label">师承：</span><span class="info-value">俞振飞</span>
+                        </div>
+                        <div class="info-item"><span class="info-label">代表作品：</span><span
+                                class="info-value">《牡丹亭》《长生殿》</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote-text">"继承传统是基础，创新发展是生命。只有在继承中创新，昆曲艺术才能永葆青春。"</p>
+            <p class="quote-author">—— 蔡正仁</p>
+        </div>
+
+        <div class="section" id="life">
+            <h2 class="section-title">生平简介</h2>
+            <div class="section-content">
+                <p>蔡正仁（1941年－），浙江吴兴人，著名昆曲表演艺术家，工小生。他出身于戏曲家庭，自幼喜爱昆曲艺术。1954年进入华东戏曲研究院昆曲演员训练班学习，师从俞振飞、沈传芷等昆曲名家，是俞振飞最得意的弟子之一。
+                </p>
+                <p>蔡正仁在继承俞派艺术的基础上，形成了自己独特的表演风格。他的嗓音清亮圆润，唱腔婉转优美，身段儒雅大方，尤其擅长饰演柳梦梅、唐明皇等经典小生角色。</p>
+                <p>作为上海昆剧团的主要演员，蔡正仁参与了众多昆曲经典剧目的复排和演出，为昆曲的传承与发展做出了重要贡献。他还积极开展昆曲教育工作，培养了一批优秀青年演员。</p>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <h2 class="section-title">艺术成就</h2>
+            <ul class="achievements-list">
+                <li><strong>俞派传人：</strong>蔡正仁是俞振飞先生的得意门生，深得俞派艺术精髓，被誉为"俞派艺术的最佳继承者"。</li>
+                <li><strong>小生典范：</strong>他饰演的柳梦梅、唐明皇等角色形神兼备，成为昆曲小生表演的经典范本。</li>
+                <li><strong>唱腔艺术：</strong>蔡正仁的唱腔继承了俞派的特点，讲究字正腔圆、韵味醇厚，极具艺术感染力。</li>
+                <li><strong>舞台风范：</strong>他的身段表演儒雅大方，举手投足间尽显古典文人的优雅气质。</li>
+                <li><strong>教育传承：</strong>作为昆曲教育家，他培养了大批青年演员，为昆曲艺术的延续注入新的活力。</li>
+            </ul>
+        </div>
+
+        <div class="section" id="works">
+            <h2 class="section-title">代表作品</h2>
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-title">《牡丹亭》</div>
+                    <div class="work-role">饰演 柳梦梅</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《长生殿》</div>
+                    <div class="work-role">饰演 唐明皇</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《玉簪记》</div>
+                    <div class="work-role">饰演 潘必正</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《紫钗记》</div>
+                    <div class="work-role">饰演 李益</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《荆钗记》</div>
+                    <div class="work-role">饰演 王十朋</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-title">《西厢记》</div>
+                    <div class="work-role">饰演 张生</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="legacy">
+            <h2 class="section-title">传承影响</h2>
+            <div class="section-content">
+                <p>蔡正仁是当代昆曲小生艺术的代表人物，他继承并发展了俞派艺术，使其在新时代焕发出新的光彩。他的表演风格和艺术理念深深影响了年轻一代昆曲演员。</p>
+                <p>作为上海昆剧团的资深艺术家，蔡正仁参与了大量昆曲经典剧目的复排和创作，为昆曲艺术的保存和传播做出了重要贡献。他主演的《长生殿》等剧目成为昆曲舞台上的经典之作。</p>
+                <p>在教育领域，蔡正仁辛勤耕耘，培养了众多优秀青年演员。他的学生们在国内外昆曲舞台上展现才华，成为昆曲传承的重要力量。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>百戏之祖 昆曲雅韵 传承中华戏曲文化</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>
