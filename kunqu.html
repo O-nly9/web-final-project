@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非遗文化 - 传统昆曲</title>
+    <style>
+        /* 全局重置与基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            color: #333;
+            /* 昆曲古典米黄底色 */
+            background: #f9f5ed;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 顶部导航栏 昆曲主题：黛青+朱红国风 */
+        .top-nav {
+            background: #2c3e50;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .top-nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .top-nav .nav-links a {
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .top-nav .nav-links a:hover,
+        .top-nav .nav-links a.active {
+            color: #e74c3c;
+        }
+
+        .top-nav .login-btn {
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* 英雄区 昆曲背景 */
+        .hero {
+            position: relative;
+            height: 320px;
+            background: url('img/75.jpg') no-repeat center/cover;
+            background-size: 100% 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.55);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 80px;
+            font-weight: bold;
+            font-family: "STKaiti", "KaiTi", "楷体", serif;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 200, 180, 0.4);
+            letter-spacing: 20px;
+            color: #fff;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-family: "STFangsong", "仿宋", serif;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle::before,
+        .hero-subtitle::after {
+            content: '';
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #fff, transparent);
+        }
+
+        .hero-vase {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+        }
+
+        .hero-desc {
+            margin-top: 25px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 3px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-family: "STFangsong", "仿宋", serif;
+        }
+
+        /* 内容容器 强化高度，彻底防止塌陷 */
+        .content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            min-height: 600px;
+            overflow: visible;
+        }
+
+        .page {
+            display: none;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8c2c2c;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        /* 首页样式 */
+        .intro-text {
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .history-block {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+        }
+
+        .history-block img {
+            width: 200px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .history-text {
+            flex: 1;
+        }
+
+        .history-text h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #8c2c2c;
+        }
+
+        .history-text p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* 发展历史页面样式 */
+        .history-timeline {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+        }
+
+        .history-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0d6c8;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .history-item h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #8c2c2c;
+            margin-bottom: 10px;
+        }
+
+        .history-item p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* 表演形式页面样式 */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .type-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+        }
+
+        .type-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .type-card-body {
+            padding: 15px;
+        }
+
+        .type-card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .type-card-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* 表演场景页面样式 */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .pattern-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+        }
+
+        .pattern-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .pattern-card-body {
+            padding: 15px;
+        }
+
+        .pattern-card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .pattern-card-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* 制作技艺页面样式 */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* 风格配色页面样式 */
+        .color-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0d6c8;
+        }
+
+        .color-item img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .color-info {
+            flex: 1;
+        }
+
+        .color-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #8c2c2c;
+        }
+
+        .color-period {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .color-desc {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* 表单按钮 昆曲朱红主色 */
+        .form-btn {
+            padding: 8px 20px;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .form-btn:hover {
+            background: #c0392b;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 10px;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .auth-btn:hover {
+            background: #c0392b;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .top-nav .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .card-grid,
+            .tech-grid,
+            .pattern-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .history-block {
+                flex-direction: column;
+            }
+
+            .history-block img {
+                width: 100%;
+                height: auto;
+            }
+
+            .color-item {
+                flex-direction: column;
+            }
+
+            .color-item img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* 图片放大预览弹窗 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            cursor: pointer;
+        }
+
+        .image-modal.active {
+            display: block;
+            overflow: auto;
+        }
+
+        .modal-scroll-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+            transform-origin: center top;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1002;
+        }
+
+        .modal-close:hover {
+            color: #e74c3c;
+        }
+
+        .modal-title {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 16px;
+            border-radius: 20px;
+            z-index: 1002;
+        }
+
+        .zoom-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            backdrop-filter: blur(4px);
+        }
+
+        .zoom-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .zoom-reset {
+            width: auto;
+            padding: 0 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .clickable-img {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部导航 -->
+    <div class="top-nav">
+        <!-- Logo点击跳转总首页 -->
+        <div class="logo" onclick="location.href='index.html'">非遗昆曲</div>
+        <div class="nav-links">
+            <!-- 新增总首页跳转链接 -->
+            <a href="index.html" class="nav-link">总首页</a>
+            <a href="#home" class="nav-link active" data-page="home">昆曲首页</a>
+            <a href="#history" class="nav-link" data-page="history">发展历史</a>
+            <a href="#type" class="nav-link" data-page="type">表演形式</a>
+            <a href="#pattern" class="nav-link" data-page="pattern">经典剧目</a>
+            <a href="#tech" class="nav-link" data-page="tech">唱腔身段</a>
+            <a href="#protect" class="nav-link" data-page="protect">传承保护</a>
+            <a href="#color" class="nav-link" data-page="color">服饰妆容</a>
+            <a href="#process" class="nav-link" data-page="process">演出流程</a>
+            <a href="#capital" class="nav-link" data-page="capital">艺术流派</a>
+            <a href="#contact" class="nav-link" data-page="contact">在线交流</a>
+        </div>
+        <div class="login-btn nav-link" data-page="login">登录</div>
+    </div>
+
+    <!-- 英雄区 -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">昆曲</h1>
+            <div class="hero-subtitle">
+                百戏之祖 雅韵流芳
+            </div>
+            <div class="hero-desc">婉转悠扬水磨腔 · 昆曲雅韵冠群芳</div>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content">
+        <!-- 首页 -->
+        <div class="page active" id="home" data-id="home">
+            <h2 class="section-title">百戏之祖 雅韵千年</h2>
+            <p class="intro-text">
+                昆曲原名“昆山腔”，发源于江苏昆山，是中国古老的戏曲声腔、剧种，被誉为“百戏之祖”，入选联合国教科文组织人类非物质文化遗产代表作名录。昆曲唱腔婉转悠扬、舞姿典雅优美，集唱、念、做、打于一体，承载着千年中华戏曲美学与人文底蕴。
+            </p>
+            <div class="card-grid">
+                <div class="card">
+                    <img src="img/4.5.jpg" alt="唱腔艺术">
+                    <div class="card-body">
+                        <h3 class="card-title">唱腔艺术</h3>
+                        <p class="card-desc">昆曲唱腔讲究水磨调，曲调细腻婉转、一唱三叹，咬字归韵严谨，旋律典雅清丽，是传统声乐艺术的典范，每一段唱词都兼具文学与音乐双重美感。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/4.2.jpg" alt="服饰妆容">
+                    <div class="card-body">
+                        <h3 class="card-title">服饰妆容</h3>
+                        <p class="card-desc">昆曲戏服配色雅致、刺绣精美，妆容遵循传统程式，生旦净丑各有规范，服饰与扮相完美配合角色身份、性格，尽显古典东方美学。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/4.3.jpg" alt="传承现状">
+                    <div class="card-body">
+                        <h3 class="card-title">传承现状</h3>
+                        <p class="card-desc">昆曲节奏舒缓、学习门槛高，受众偏向小众，年轻传承者稀缺。如今依靠院团、校园普及与文旅演出，不断活化传统，让古雅昆曲走向当代大众。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="history-block">
+                <img src="img/4.4.jpg" alt="昆曲实景演出">
+                <div class="history-text">
+                    <h3>昆曲千年发展史</h3>
+                    <p>昆曲起源于元末明初的昆山地区，明代魏良辅改良唱腔，创立“水磨调”，让昆山腔脱胎换骨，逐渐风靡江南。明代中后期昆曲走向鼎盛，文人雅士争相创作剧本，汤显祖《牡丹亭》成为千古名作。</p>
+                    <p>清代昆曲依旧盛行，后受地方戏曲冲击逐渐式微。近代一度濒临失传，建国后各地成立昆剧院团开展抢救保护。如今作为世界级非遗，昆曲重回大众视野，在舞台、影视、校园中绽放新的光彩。</p>
+                </div>
+            </div>
+
+            <!-- 昆曲名家展示 -->
+            <div class="celebrity-section" style="margin-top: 30px;">
+                <h2 class="section-title">昆曲名家</h2>
+                <div class="celebrity-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                    <div class="celebrity-card"
+                        style="background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);">
+                        <img src="img/1.2.9.jpg" alt="俞振飞" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: center;">
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"><a href="俞振飞.html"
+                                    style="color: #8c2c2c; text-decoration: none;">俞振飞</a></h3>
+                            <p style="font-size: 13px; color: #666; line-height: 1.5;">京昆艺术大师，被誉为"昆曲第一小生"，擅长《牡丹亭》等经典剧目。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="celebrity-card"
+                        style="background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);">
+                        <img src="img/1.2.10.jpg" alt="张继青" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: center;">
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"><a href="张继青.html"
+                                    style="color: #8c2c2c; text-decoration: none;">张继青</a></h3>
+                            <p style="font-size: 13px; color: #666; line-height: 1.5;">
+                                "昆曲皇后"，工闺门旦，以《牡丹亭·惊梦》等剧目闻名，唱腔婉转细腻。</p>
+                        </div>
+                    </div>
+                    <div class="celebrity-card"
+                        style="background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);">
+                        <img src="img/1.2.11.jpg" alt="蔡正仁" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: center;">
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"><a href="蔡正仁.html"
+                                    style="color: #8c2c2c; text-decoration: none;">蔡正仁</a></h3>
+                            <p style="font-size: 13px; color: #666; line-height: 1.5;">著名昆曲表演艺术家，工小生，师承俞振飞，艺术风格典雅大方。</p>
+                        </div>
+                    </div>
+                    <div class="celebrity-card"
+                        style="background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);">
+                        <img src="img/1.2.12.jpg" alt="沈世华" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 15px; text-align: center;">
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"><a href="沈世华.html"
+                                    style="color: #8c2c2c; text-decoration: none;">沈世华</a></h3>
+                            <p style="font-size: 13px; color: #666; line-height: 1.5;">昆曲旦角名家，擅长《玉簪记》等剧目，表演细腻传神。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 发展历史 -->
+        <div class="page" id="history" data-id="history">
+            <h2 class="section-title">昆曲发展历史</h2>
+            <div class="history-timeline">
+                <div class="history-item">
+                    <h3>元末明初：源头萌芽</h3>
+                    <p>昆山一带形成本土民间腔调，为昆曲雏形，曲调质朴，仅在民间乡间流传，尚未形成完整戏曲体系。</p>
+                </div>
+                <div class="history-item">
+                    <h3>明代中期：唱腔革新</h3>
+                    <p>魏良辅改良昆腔，融合南北曲特点，创造婉转柔美的水磨调，奠定昆曲艺术根基，开始登上文人舞台。</p>
+                </div>
+                <div class="history-item">
+                    <h3>晚明时期：全面鼎盛</h3>
+                    <p>昆曲风靡全国，剧本创作繁荣，名家名作辈出，成为当时主流戏曲，文人观戏、填词成为风尚。</p>
+                </div>
+                <div class="history-item">
+                    <h3>清代：雅部地位</h3>
+                    <p>昆曲被尊为“雅部”，与地方花部并存，宫廷与民间皆有演出，艺术体系愈发完善。</p>
+                </div>
+                <div class="history-item">
+                    <h3>近现代：衰落濒危</h3>
+                    <p>京剧、地方戏兴起，昆曲受众缩减，加上战乱影响，传统班社解散，技艺一度濒临断绝。</p>
+                </div>
+                <div class="history-item">
+                    <h3>当代：非遗复兴</h3>
+                    <p>列入世界非物质文化遗产后，国家大力扶持，专业院团复排经典、培养新人，昆曲重获新生。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表演形式 -->
+        <div class="page" id="type" data-id="type">
+            <h2 class="section-title">昆曲表演形式</h2>
+            <div class="type-grid">
+                <div class="type-card">
+                    <img src="img/5.7.jpg" alt="单人清唱">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">单人清唱</h3>
+                        <p class="type-card-desc">最传统的形式，无舞台表演，仅以唱腔为主，侧重声腔韵味，多用于雅集、品鉴场合。</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/5.2.jpg" alt="折子戏">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">经典折子戏</h3>
+                        <p class="type-card-desc">选取全剧精彩片段演出，短小精悍，是昆曲最常见的舞台表演形式。</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/5.3.jpg" alt="整本大戏">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">整本大戏</h3>
+                        <p class="type-card-desc">完整演绎一部戏曲剧本，情节完整、人物饱满，演出时长较长，考验演员功底。</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/5.4.jpg" alt="舞台歌舞">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">歌舞表演</h3>
+                        <p class="type-card-desc">侧重身段、水袖、舞姿，唱舞结合，视觉与听觉融为一体，极具古典美感。</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/5.5.jpg" alt="南北合套">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">南北合套</h3>
+                        <p class="type-card-desc">融合南曲、北曲唱腔，曲风多变，表现力更加丰富，属于特色表演形式。</p>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <img src="img/5.6.jpg" alt="现代改编">
+                    <div class="type-card-body">
+                        <h3 class="type-card-title">现代改编剧</h3>
+                        <p class="type-card-desc">结合现代舞台、灯光、编剧，在传统基础创新，适配当代观众审美。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 经典剧目 -->
+        <div class="page" id="pattern" data-id="pattern">
+            <h2 class="section-title">昆曲经典剧目</h2>
+            <div class="pattern-grid">
+                <div class="pattern-card">
+                    <img src="img/6.2.jpg" alt="牡丹亭">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">牡丹亭</h3>
+                        <p class="pattern-card-desc">汤显祖代表作，爱情主题千古流传，是昆曲最具代表性的经典剧目。</p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/6.3.jpg" alt="长生殿">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">长生殿</h3>
+                        <p class="pattern-desc">讲述唐明皇与杨贵妃的故事，曲文典雅，唱腔优美，传唱百年。</p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/6.4.jpg" alt="桃花扇">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">桃花扇</h3>
+                        <p class="pattern-card-desc">借离合之情，写兴亡之感，兼具历史与艺术价值。</p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/6.5.jpg" alt="西厢记">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">西厢记</h3>
+                        <p class="pattern-card-desc">古典爱情名剧，唱词优美，是昆曲常演不衰的传统剧目。</p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/6.6.jpg" alt="浣纱记">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">浣纱记</h3>
+                        <p class="pattern-card-desc">早期经典昆曲大戏，也是昆曲走向成熟的代表剧目。</p>
+                    </div>
+                </div>
+                <div class="pattern-card">
+                    <img src="img/6.7.jpg" alt="民间小戏">
+                    <div class="pattern-card-body">
+                        <h3 class="pattern-card-title">民间小戏</h3>
+                        <p class="pattern-card-desc">情节轻松、贴近生活，多用于民俗演出与基层表演。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 唱腔身段 -->
+        <div class="page" id="tech" data-id="tech">
+            <h2 class="section-title">昆曲唱腔与身段</h2>
+            <div class="tech-grid">
+                <div class="card">
+                    <img src="img/7.2.jpg" alt="水磨唱腔">
+                    <div class="card-body">
+                        <h3 class="card-title">水磨唱腔</h3>
+                        <p class="card-desc">昆曲核心声腔，节奏舒缓、婉转细腻，讲究字正腔圆、依字行腔。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/7.3.jpg" alt="四功五法">
+                    <div class="card-body">
+                        <h3 class="card-title">四功五法</h3>
+                        <p class="card-desc">唱、念、做、打四大基本功，配合手眼身法步，是演员必修技艺。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/7.4.jpg" alt="水袖功法">
+                    <div class="card-body">
+                        <h3 class="card-title">水袖功法</h3>
+                        <p class="card-desc">依靠长袖变化表达情绪，动作柔美多变，是昆曲标志性身段。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/7.5.jpg" alt="念白艺术">
+                    <div class="card-body">
+                        <h3 class="card-title">念白艺术</h3>
+                        <p class="card-desc">分韵白、苏白，读音考究，抑扬顿挫，兼具韵律美感。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/7.6.jpg" alt="舞台程式">
+                    <div class="card-body">
+                        <h3 class="card-title">舞台程式</h3>
+                        <p class="card-desc">动作、走位、表情皆有传统规范，一招一式都遵循古典范式。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/7.7.jpg" alt="行当划分">
+                    <div class="card-body">
+                        <h3 class="card-title">行当划分</h3>
+                        <p class="card-desc">分为生、旦、净、丑四大行当，角色分工明确，风格各异。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 传承保护 -->
+        <div class="page" id="protect" data-id="protect">
+            <h2 class="section-title">昆曲传承与保护</h2>
+            <div class="history-timeline">
+                <div class="history-item">
+                    <h3>传承困境</h3>
+                    <p>昆曲学习周期长、门槛高，节奏较慢不符合当下快节奏审美，年轻观众与传承人偏少，部分冷门曲目濒临失传。</p>
+                </div>
+                <div class="history-item">
+                    <h3>保护举措</h3>
+                    <p>设立专业昆剧院、戏曲学校，开展师徒传承；整理古谱、音像资料，建立非遗档案库。</p>
+                </div>
+                <div class="history-item">
+                    <h3>活化创新</h3>
+                    <p>走进校园、文旅景区，结合短视频、舞台剧、影视跨界传播，让古老昆曲融入现代生活。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 服饰妆容 -->
+        <div class="page" id="color" data-id="color">
+            <h2 class="section-title">昆曲服饰与妆容</h2>
+            <p>昆曲服饰妆容遵循古典程式，配色雅致、形制考究，极具东方古典美学：</p>
+            <div class="color-item">
+                <img src="img/8.2.jpg" alt="旦角妆造">
+                <div class="color-info">
+                    <div class="color-name">旦角妆造</div>
+                    <div class="color-period">闺门旦/花旦</div>
+                    <div class="color-desc">妆容清丽淡雅，服饰多用粉、红、浅绿等柔色，刺绣精巧，尽显温婉气质。</div>
+                </div>
+            </div>
+            <div class="color-item">
+                <img src="img/8.3.jpg" alt="生角装扮">
+                <div class="color-info">
+                    <div class="color-name">生角装扮</div>
+                    <div class="color-period">小生/老生</div>
+                    <div class="color-desc">妆容简约干净，服饰以青、蓝、白为主，儒雅端正，贴合文人气质。</div>
+                </div>
+            </div>
+            <div class="color-item">
+                <img src="img/8.4.jpg" alt="净角脸谱">
+                <div class="color-info">
+                    <div class="color-name">净角脸谱</div>
+                    <div class="color-period">花脸行当</div>
+                    <div class="color-desc">脸谱色彩鲜明，图案夸张，通过色彩区分人物性格与忠奸。</div>
+                </div>
+            </div>
+            <div class="color-item">
+                <img src="img/8.5.jpg" alt="传统头面">
+                <div class="color-info">
+                    <div class="color-name">传统头面</div>
+                    <div class="color-period">戏曲头饰</div>
+                    <div class="color-desc">珠翠、点翠、银饰搭配精巧，是昆曲造型重要组成部分。</div>
+                </div>
+            </div>
+            <div class="color-item">
+                <img src="img/8.6.jpg" alt="舞台行头">
+                <div class="color-info">
+                    <div class="color-name">全套行头</div>
+                    <div class="color-period">演出套装</div>
+                    <div class="color-desc">整套戏服、配饰、鞋履统一搭配，严格遵循传统戏曲规制。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 演出流程 -->
+        <div class="page" id="process" data-id="process">
+            <h2 class="section-title">昆曲标准演出流程</h2>
+            <div class="process-flow" style="margin-bottom: 20px; text-align: center;">
+                <img src="img/78.jpg" alt="演出流程" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="process-list" style="font-size: 14px; line-height: 1.8;">
+                <ol style="padding-left: 20px;">
+                    <li style="margin-bottom: 10px;"><strong>前期准备</strong>：演员上妆、穿戴戏服与头饰，乐队调试乐器。</li>
+                    <li style="margin-bottom: 10px;"><strong>舞台布置</strong>：搭建布景、摆放道具，检查灯光音响。</li>
+                    <li style="margin-bottom: 10px;"><strong>开场锣鼓</strong>：传统锣鼓开场，烘托氛围，引导观众入席。</li>
+                    <li style="margin-bottom: 10px;"><strong>演员登场</strong>：角色依次登台，开启正式表演。</li>
+                    <li style="margin-bottom: 10px;"><strong>唱念做打</strong>：依照剧本完成唱腔、念白、身段表演。</li>
+                    <li style="margin-bottom: 10px;"><strong>剧目过渡</strong>：折子戏之间短暂休整、换场。</li>
+                    <li style="margin-bottom: 10px;"><strong>压轴演出</strong>：上演经典主打剧目，达到演出高潮。</li>
+                    <li style="margin-bottom: 10px;"><strong>谢幕退场</strong>：演出结束，演员集体谢幕，舞台收尾。</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 艺术流派 -->
+        <div class="page" id="capital" data-id="capital">
+            <h2 class="section-title">昆曲艺术流派与发源地</h2>
+            <div class="culture-item"
+                style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e0d6c8;">
+                <div class="culture-title" style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">发源地</div>
+                <div class="culture-desc" style="font-size: 14px; line-height: 1.6;">
+                    昆曲发源于江苏昆山，后流传至苏州、南京、浙江、北京等地，形成南北不同风格。</div>
+            </div>
+            <div class="culture-item"
+                style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e0d6c8;">
+                <div class="culture-title" style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">主要流派</div>
+                <div class="culture-desc" style="font-size: 14px; line-height: 1.6;">
+                    分为南昆、北昆、湘昆、川昆等流派，南曲婉转柔美，北曲高亢刚劲，各有地域特色。</div>
+            </div>
+            <div class="culture-item"
+                style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e0d6c8;">
+                <div class="culture-title" style="font-size: 16px;">艺术价值</div>
+                <div class="culture-desc" style="font-size: 14px;">昆曲融合文学、音乐、舞蹈、美术，是中华戏曲艺术的集大成者，文化价值极高。</div>
+            </div>
+        </div>
+
+        <!-- 在线交流 -->
+        <div class="page" id="contact" data-id="contact">
+            <h2 class="section-title">在线交流</h2>
+            <form class="contact-form" style="max-width: 500px; margin: 0 auto; font-size: 14px;">
+                <div class="form-item" style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <label for="nickname" style="width: 60px; text-align: right;">昵称：</label>
+                    <input type="text" id="nickname" placeholder="请输入您的昵称"
+                        style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                </div>
+                <div class="form-item" style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <label for="email" style="width: 60px; text-align: right;">邮箱：</label>
+                    <input type="email" id="email" placeholder="请输入您的邮箱"
+                        style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                </div>
+                <div class="form-item" style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <label for="message" style="width: 60px; text-align: right;">留言：</label>
+                    <textarea id="message" placeholder="交流昆曲文化、剧目、演出心得"
+                        style="flex: 1; padding: 8px; border: 1px solid #ccc; font-size: 14px; height: 120px; resize: none;"></textarea>
+                </div>
+                <div class="form-buttons" style="display: flex; justify-content: center; gap: 20px;">
+                    <button type="submit" class="form-btn">提交</button>
+                    <button type="reset" class="form-btn">清空</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 登录 -->
+        <div class="page" id="login" data-id="login">
+            <h2 class="section-title">用户登录</h2>
+            <div class="auth-box"
+                style="max-width: 400px; margin: 0 auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);">
+                <div class="form-item" style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">用户名</label>
+                    <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+                        placeholder="请输入用户名">
+                </div>
+                <div class="form-item" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 5px;">密码</label>
+                    <input type="password"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+                        placeholder="请输入密码">
+                </div>
+                <button class="auth-btn">登录</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>百戏之祖 昆曲雅韵 传承中华戏曲文化</p>
+        <p style="margin-top: 8px;"><a href="guanyuwomen.html"
+                style="color: #fff; text-decoration: underline; margin: 0 8px;">关于我们</a> | <a href="lianxiwomen.html"
+                style="color: #fff; text-decoration: underline; margin: 0 8px;">联系我们</a></p>
+    </div>
+
+    <!-- 图片放大预览弹窗 -->
+    <div class="image-modal" id="imageModal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <div class="modal-scroll-wrapper" id="modalScrollWrapper">
+            <img class="modal-content" id="modalImage">
+        </div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomOut" title="缩小">-</button>
+            <button class="zoom-btn zoom-reset" id="zoomReset">100%</button>
+            <button class="zoom-btn" id="zoomIn" title="放大">+</button>
+        </div>
+    </div>
+
+    <script>
+        // 图片放大预览功能
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalClose = document.getElementById('modalClose');
+        const modalWrapper = document.getElementById('modalScrollWrapper');
+        const zoomInBtn = document.getElementById('zoomIn');
+        const zoomOutBtn = document.getElementById('zoomOut');
+        const zoomResetBtn = document.getElementById('zoomReset');
+
+        let currentScale = 1;
+        const scaleStep = 0.25;
+        const minScale = 0.5;
+        const maxScale = 2;
+
+        function updateZoom() {
+            currentScale = Math.max(minScale, Math.min(maxScale, currentScale));
+            modalImg.style.transform = `scale(${currentScale})`;
+            zoomResetBtn.textContent = Math.round(currentScale * 100) + '%';
+        }
+
+        function resetZoom() {
+            currentScale = 1;
+            modalImg.style.transform = '';
+            zoomResetBtn.textContent = '100%';
+        }
+
+        // 图片点击放大
+        const images = document.querySelectorAll('img:not(.modal-content)');
+        images.forEach(img => {
+            img.classList.add('clickable-img');
+            img.addEventListener('click', function (e) {
+                e.stopPropagation();
+                modalImg.src = this.src;
+                modalTitle.textContent = this.alt || '图片预览';
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                resetZoom();
+            });
+        });
+
+        // 滚轮缩放
+        modal.addEventListener('wheel', function (e) {
+            if (!modal.classList.contains('active')) return;
+            if (e.target === modalClose || e.target.closest('.zoom-controls')) return;
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -scaleStep : scaleStep;
+            currentScale += delta;
+            updateZoom();
+        });
+
+        // 按钮缩放
+        zoomInBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            currentScale += scaleStep;
+            updateZoom();
+        });
+
+        zoomOutBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            currentScale -= scaleStep;
+            updateZoom();
+        });
+
+        zoomResetBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            resetZoom();
+        });
+
+        // 拖拽移动
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
+
+        modal.addEventListener('mousedown', function (e) {
+            if (!modal.classList.contains('active')) return;
+            if (e.target === modalClose || e.target.closest('.zoom-controls')) return;
+            isDragging = true;
+            modal.style.cursor = 'grabbing';
+            startX = e.pageX - modal.offsetLeft;
+            startY = e.pageY - modal.offsetTop;
+            scrollLeft = modal.scrollLeft;
+            scrollTop = modal.scrollTop;
+        });
+
+        modal.addEventListener('mouseleave', function () {
+            isDragging = false;
+            modal.style.cursor = 'pointer';
+        });
+
+        modal.addEventListener('mouseup', function () {
+            isDragging = false;
+            modal.style.cursor = 'pointer';
+        });
+
+        modal.addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - modal.offsetLeft;
+            const y = e.pageY - modal.offsetTop;
+            const walkX = (x - startX) * 1.5;
+            const walkY = (y - startY) * 1.5;
+            modal.scrollLeft = scrollLeft - walkX;
+            modal.scrollTop = scrollTop - walkY;
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            resetZoom();
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal || e.target === modalWrapper) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.getAttribute('href') === 'index.html') return;
+                    e.preventDefault();
+                    const targetPage = link.getAttribute('data-page');
+
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    link.classList.add('active');
+
+                    pages.forEach(page => {
+                        if (page.getAttribute('data-id') === targetPage) {
+                            page.classList.add('active');
+                        } else {
+                            page.classList.remove('active');
+                        }
+                    });
+
+                    window.scrollTo(0, 0);
+                });
+            });
+
+            // 图片放大预览功能
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalClose = document.getElementById('modalClose');
+
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.classList.add('clickable-img');
+                img.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    modalImg.src = this.src;
+                    modalTitle.textContent = this.alt || '图片预览';
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
